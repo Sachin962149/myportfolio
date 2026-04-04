@@ -11,6 +11,7 @@
   --wr:#fff0ee;--wp:#fde8df;--wl:#f0eeff;--ws:#e8f4fd;--wm:#e6f7f2;
   --smoke:#f8f4f2;--snow:#fdfcfb;
   --cr:#c0392b;--ruby:#e74c3c;--rose:#ff6b6b;--coral:#ff8a80;--blush:#ffb3b0;--ember:#ff4444;
+  --green:#10b981;--green-light:#d1fae5;--green-dark:#059669;--green-glow:rgba(16,185,129,.25);
   --deep:#1a0a0a;--ink:#1c1010;--ink2:#2e1a1a;--muted:#7a6868;--stone:#9a8888;--pebble:#d4c8c8;
   --border:rgba(192,57,43,.15);--border2:rgba(231,76,60,.3);
   --serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit',sans-serif;--mono:'DM Mono',monospace;
@@ -20,7 +21,7 @@
 html{scroll-behavior:smooth}
 body{background:var(--snow);color:var(--ink);font-family:var(--sans);overflow-x:hidden}
 
-/* CURSOR - desktop only */
+/* CURSOR */
 #cur-dot,#cur-ring,#cur-glow,.trail-dot{display:none}
 @media(hover:hover) and (pointer:fine){
   body{cursor:none}
@@ -79,8 +80,6 @@ nav.scrolled{padding:1rem var(--section-px);background:rgba(253,250,249,.88);bac
 .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);background:var(--ruby)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);background:var(--ruby)}
-
-/* MOBILE NAV OVERLAY */
 .mobile-nav{display:none;position:fixed;inset:0;z-index:550;background:rgba(253,252,251,.97);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
 .mobile-nav.open{opacity:1;pointer-events:auto}
 .mobile-nav a{font-family:var(--serif);font-size:1.8rem;font-weight:600;font-style:italic;color:var(--ink);text-decoration:none;transition:color .2s;letter-spacing:.02em}
@@ -92,29 +91,38 @@ section,footer{position:relative;z-index:10}
 /* HERO */
 #hero{min-height:100vh;display:grid;grid-template-columns:1fr 380px;align-items:center;padding:9rem var(--section-px) 6rem;gap:4rem;overflow:hidden;background:linear-gradient(160deg,var(--wr) 0%,var(--snow) 40%,var(--wp) 100%)}
 #hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(255,107,107,.07),transparent 50%),radial-gradient(ellipse at 10% 80%,rgba(255,179,176,.1),transparent 50%);pointer-events:none}
-.hero-availability{display:inline-flex;align-items:center;gap:10px;padding:.5rem 1.2rem;background:rgba(255,107,107,.08);border:1px solid rgba(231,76,60,.2);border-radius:99px;font-family:var(--mono);font-size:.58rem;color:var(--cr);letter-spacing:.16em;text-transform:uppercase;margin-bottom:2.5rem;opacity:0;animation:riseUp .7s .4s var(--smooth) forwards}
-.avail-pulse{width:7px;height:7px;border-radius:50%;background:var(--ruby);animation:redPulse 2.2s ease-in-out infinite;position:relative}
-.avail-pulse::after{content:'';position:absolute;inset:-3px;border-radius:50%;border:1px solid var(--ruby);animation:pingExpand 2.2s ease-in-out infinite}
-@keyframes redPulse{0%,100%{opacity:1}50%{opacity:.3}}
-@keyframes pingExpand{0%{transform:scale(1);opacity:.8}100%{transform:scale(2.5);opacity:0}}
+
+/* GREEN AVAILABILITY BADGE */
+.hero-availability{display:inline-flex;align-items:center;gap:10px;padding:.5rem 1.2rem;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);border-radius:99px;font-family:var(--mono);font-size:.58rem;color:var(--green-dark);letter-spacing:.16em;text-transform:uppercase;margin-bottom:2.5rem;opacity:0;animation:riseUp .7s .4s var(--smooth) forwards;transition:all .3s var(--spring);box-shadow:0 0 0 0 var(--green-glow)}
+.hero-availability:hover{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.4);box-shadow:0 0 20px var(--green-glow);transform:translateY(-2px)}
+.avail-pulse{width:8px;height:8px;border-radius:50%;background:var(--green);animation:greenPulse 2s ease-in-out infinite;position:relative;box-shadow:0 0 8px var(--green-glow)}
+.avail-pulse::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1.5px solid var(--green);animation:pingExpand 2s ease-in-out infinite;opacity:.6}
+@keyframes greenPulse{0%,100%{opacity:1;box-shadow:0 0 8px var(--green-glow)}50%{opacity:.5;box-shadow:0 0 16px var(--green-glow)}}
+@keyframes pingExpand{0%{transform:scale(1);opacity:.8}100%{transform:scale(2.8);opacity:0}}
+
 .hero-greeting{font-family:var(--mono);font-size:.65rem;color:var(--stone);letter-spacing:.22em;text-transform:uppercase;margin-bottom:1rem;opacity:0;animation:riseUp .7s .55s var(--smooth) forwards}
 .hero-name{font-family:var(--serif);font-size:clamp(3.5rem,10vw,9rem);font-weight:700;line-height:.88;letter-spacing:-.02em;margin-bottom:1.2rem;opacity:0;animation:riseUp .9s .7s var(--smooth) forwards}
 .hero-name .fn{display:block;font-style:italic;background:linear-gradient(135deg,var(--ink),var(--ink2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-name .ln{display:block;background:linear-gradient(135deg,var(--cr),var(--ruby),var(--rose),var(--coral));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-title{font-family:var(--serif);font-size:clamp(1rem,2vw,1.3rem);font-weight:300;font-style:italic;color:var(--stone);letter-spacing:.06em;margin-bottom:2.2rem;opacity:0;animation:riseUp .7s .85s var(--smooth) forwards}
-.hero-title span{color:var(--ruby);font-style:normal;font-weight:500}
+
+/* TYPING EFFECT */
+.hero-title{font-family:var(--serif);font-size:clamp(1rem,2vw,1.3rem);font-weight:300;font-style:italic;color:var(--stone);letter-spacing:.06em;margin-bottom:2.2rem;opacity:0;animation:riseUp .7s .85s var(--smooth) forwards;min-height:1.6em}
+.hero-title .typed-text{color:var(--ruby);font-style:normal;font-weight:500}
+.hero-title .cursor-blink{display:inline-block;width:2px;height:1.1em;background:var(--ruby);margin-left:2px;vertical-align:text-bottom;animation:blink 1s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
 .hero-bio{font-size:.95rem;color:var(--muted);line-height:2;max-width:520px;font-weight:300;margin-bottom:3rem;opacity:0;animation:riseUp .7s 1s var(--smooth) forwards}
 .hero-bio strong{color:var(--ink2);font-weight:600}
 .hero-bio em{color:var(--cr);font-style:normal;font-weight:500}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:riseUp .7s 1.15s var(--smooth) forwards}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:1rem 2.4rem;background:linear-gradient(135deg,var(--cr),var(--ruby));color:#fff;font-size:.82rem;font-weight:400;letter-spacing:.06em;text-decoration:none;border-radius:99px;transition:all .4s var(--spring);box-shadow:0 8px 30px rgba(192,57,43,.25);position:relative;overflow:hidden}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:1rem 2.4rem;background:linear-gradient(135deg,var(--cr),var(--ruby));color:#fff;font-size:.82rem;font-weight:400;letter-spacing:.06em;text-decoration:none;border-radius:99px;transition:all .4s var(--spring);box-shadow:0 8px 30px rgba(192,57,43,.25);position:relative;overflow:hidden;border:none;cursor:pointer;font-family:var(--sans)}
 .btn-primary::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--ruby),var(--rose));border-radius:inherit;opacity:0;transition:opacity .4s}
 .btn-primary span,.btn-primary .ico{position:relative;z-index:1}
 .btn-primary:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(192,57,43,.35)}
 .btn-primary:hover::after{opacity:1}
 .btn-primary:hover .ico{transform:translateX(5px)}
 .ico{display:inline-block;transition:transform .4s var(--spring)}
-.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:1rem 2.4rem;border:1.5px solid var(--pebble);color:var(--muted);font-size:.82rem;letter-spacing:.06em;text-decoration:none;border-radius:99px;transition:all .4s var(--ease)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:1rem 2.4rem;border:1.5px solid var(--pebble);color:var(--muted);font-size:.82rem;letter-spacing:.06em;text-decoration:none;border-radius:99px;transition:all .4s var(--ease);cursor:pointer;background:none;font-family:var(--sans)}
 .btn-ghost:hover{border-color:var(--ruby);color:var(--ruby);transform:translateY(-3px)}
 
 /* Hero panel */
@@ -162,13 +170,16 @@ section,footer{position:relative;z-index:10}
 .pc-v{font-size:.82rem;color:var(--ink2);font-weight:400}
 .pc-v a{color:var(--ruby);text-decoration:none;transition:color .2s}
 .pc-v a:hover{color:var(--cr)}
-.live-badge{display:inline-flex;align-items:center;gap:6px;color:var(--ruby);font-size:.8rem;font-weight:500}
-.live-dot{width:6px;height:6px;border-radius:50%;background:var(--ruby);animation:redPulse 2s infinite}
+
+/* GREEN LIVE BADGE */
+.live-badge{display:inline-flex;align-items:center;gap:6px;color:var(--green-dark);font-size:.8rem;font-weight:500;padding:.2rem .7rem;background:rgba(16,185,129,.08);border-radius:99px;border:1px solid rgba(16,185,129,.2)}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:greenPulse 2s infinite;box-shadow:0 0 6px var(--green-glow)}
+
 .about-body p{font-size:.94rem;color:var(--muted);line-height:2;margin-bottom:1.5rem;font-weight:300}
 .about-body p strong{color:var(--ink2);font-weight:600}
 .about-body p em{color:var(--cr);font-style:normal;font-weight:500}
 .tags-wrap{display:flex;flex-wrap:wrap;gap:8px;margin:2rem 0}
-.tag{font-family:var(--mono);font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;padding:.45rem 1.1rem;border:1px solid rgba(231,76,60,.2);border-radius:99px;color:var(--muted);background:transparent;transition:all .3s var(--spring)}
+.tag{font-family:var(--mono);font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;padding:.45rem 1.1rem;border:1px solid rgba(231,76,60,.2);border-radius:99px;color:var(--muted);background:transparent;transition:all .3s var(--spring);cursor:default}
 .tag:hover{background:linear-gradient(135deg,var(--cr),var(--ruby));color:#fff;border-color:transparent;transform:translateY(-2px) scale(1.03);box-shadow:0 6px 20px rgba(192,57,43,.25)}
 .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:2.5rem}
 .stat-box{background:rgba(255,255,255,.7);border:1px solid rgba(231,76,60,.1);border-radius:14px;padding:1.5rem 1rem;text-align:center;transition:all .35s var(--spring)}
@@ -197,7 +208,7 @@ section,footer{position:relative;z-index:10}
 .bar-b{background:linear-gradient(90deg,#c0392b,#e74c3c,#ff8a80)}
 .bar-c{background:linear-gradient(90deg,#922b21,#c0392b,#e74c3c)}
 .soft-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-top:2rem}
-.soft-tag{font-family:var(--mono);font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;padding:.4rem 1rem;border-radius:99px;border:1px solid rgba(231,76,60,.15);color:var(--muted);background:rgba(255,255,255,.6);transition:all .25s}
+.soft-tag{font-family:var(--mono);font-size:.54rem;letter-spacing:.12em;text-transform:uppercase;padding:.4rem 1rem;border-radius:99px;border:1px solid rgba(231,76,60,.15);color:var(--muted);background:rgba(255,255,255,.6);transition:all .25s;cursor:default}
 .soft-tag:hover{background:linear-gradient(135deg,var(--cr),var(--ruby));color:#fff;border-color:transparent}
 
 /* EXPERIENCE */
@@ -229,7 +240,7 @@ section,footer{position:relative;z-index:10}
 .li-icon{width:18px;height:18px;flex-shrink:0;margin-top:2px;background:linear-gradient(135deg,var(--cr),var(--rose));border-radius:50%;display:flex;align-items:center;justify-content:center}
 .li-icon::after{content:'';width:6px;height:6px;background:#fff;border-radius:50%;opacity:.8}
 .ep-tags-row{display:flex;flex-wrap:wrap;gap:6px}
-.ep-tag{font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;padding:.32rem .85rem;border:1px solid rgba(231,76,60,.15);border-radius:99px;color:var(--muted);background:rgba(255,255,255,.5);transition:all .22s}
+.ep-tag{font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;padding:.32rem .85rem;border:1px solid rgba(231,76,60,.15);border-radius:99px;color:var(--muted);background:rgba(255,255,255,.5);transition:all .22s;cursor:default}
 .ep-tag:hover{border-color:var(--ruby);color:var(--ruby)}
 
 /* PROJECTS */
@@ -291,7 +302,7 @@ section,footer{position:relative;z-index:10}
 /* ACHIEVEMENTS */
 #achievements{background:linear-gradient(160deg,var(--wr) 0%,var(--snow) 60%,var(--wm) 100%)}
 .ach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:3rem}
-.ach-card{background:rgba(255,255,255,.7);border:1px solid rgba(231,76,60,.1);border-radius:16px;padding:1.8rem;transition:all .35s var(--spring);position:relative;overflow:hidden;backdrop-filter:blur(8px)}
+.ach-card{background:rgba(255,255,255,.7);border:1px solid rgba(231,76,60,.1);border-radius:16px;padding:1.8rem;transition:all .35s var(--spring);position:relative;overflow:hidden;backdrop-filter:blur(8px);cursor:default}
 .ach-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:0;background:linear-gradient(to top,rgba(192,57,43,.04),transparent);transition:height .4s var(--ease)}
 .ach-card:hover{background:rgba(255,255,255,.9);border-color:rgba(231,76,60,.25);transform:translateY(-6px);box-shadow:0 20px 50px rgba(192,57,43,.1)}
 .ach-card:hover::after{height:60%}
@@ -299,10 +310,8 @@ section,footer{position:relative;z-index:10}
 .ach-card:hover .ach-em{transform:scale(1.15) rotate(-5deg)}
 .ach-title{font-family:var(--serif);font-size:1rem;font-weight:600;font-style:italic;color:var(--ink2);margin-bottom:.4rem}
 .ach-desc{font-size:.78rem;color:var(--muted);line-height:1.7;font-weight:300}
-
-/* HOBBIES */
 .hobbies-wrap{display:flex;flex-wrap:wrap;gap:10px;margin-top:3rem}
-.hobby-pill{display:inline-flex;align-items:center;gap:8px;padding:.6rem 1.3rem;background:rgba(255,255,255,.7);border:1px solid rgba(231,76,60,.12);border-radius:99px;font-size:.82rem;color:var(--muted);transition:all .3s var(--spring);backdrop-filter:blur(6px)}
+.hobby-pill{display:inline-flex;align-items:center;gap:8px;padding:.6rem 1.3rem;background:rgba(255,255,255,.7);border:1px solid rgba(231,76,60,.12);border-radius:99px;font-size:.82rem;color:var(--muted);transition:all .3s var(--spring);backdrop-filter:blur(6px);cursor:default}
 .hobby-pill:hover{background:linear-gradient(135deg,var(--cr),var(--ruby));color:#fff;border-color:transparent;transform:translateY(-3px);box-shadow:0 8px 24px rgba(192,57,43,.2)}
 .hobby-pill span:first-child{font-size:1rem}
 
@@ -320,13 +329,34 @@ section,footer{position:relative;z-index:10}
 .c-link{font-family:var(--mono);font-size:.78rem;color:rgba(255,220,216,.65);text-decoration:none;letter-spacing:.05em;transition:color .2s;display:flex;align-items:center;gap:.6rem}
 .c-link:hover{color:var(--blush)}
 .soc-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-.soc-btn{font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;padding:.75rem 2rem;border:1px solid rgba(255,107,107,.25);color:rgba(255,179,176,.6);text-decoration:none;border-radius:99px;transition:all .35s var(--spring)}
+.soc-btn{font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;padding:.75rem 2rem;border:1px solid rgba(255,107,107,.25);color:rgba(255,179,176,.6);text-decoration:none;border-radius:99px;transition:all .35s var(--spring);cursor:pointer;background:none}
 .soc-btn:hover{border-color:var(--rose);color:var(--rose);background:rgba(231,76,60,.15);transform:translateY(-3px)}
 
-/* FOOTER */
+/* DOWNLOAD CV BUTTON - special green accent */
+.soc-btn.cv-download{border-color:rgba(16,185,129,.4);color:rgba(16,185,129,.8)}
+.soc-btn.cv-download:hover{border-color:var(--green);color:#fff;background:var(--green);box-shadow:0 8px 30px var(--green-glow)}
+.soc-btn.cv-download.downloading{pointer-events:none;animation:downloadPulse 1.2s ease-in-out}
+@keyframes downloadPulse{0%{transform:scale(1)}30%{transform:scale(.95)}60%{transform:scale(1.05)}100%{transform:scale(1)}}
+
 footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,var(--wr),var(--snow),var(--wp));flex-wrap:wrap;gap:1rem}
 .foot{font-family:var(--mono);font-size:.55rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
 .foot strong{color:var(--ruby)}
+
+/* SCROLL PROGRESS */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--cr),var(--ruby),var(--rose),var(--green));z-index:10001;width:0;transition:none}
+
+/* BACK TO TOP */
+.back-top{position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--cr),var(--ruby));color:#fff;border:none;cursor:pointer;z-index:400;display:flex;align-items:center;justify-content:center;font-size:1.2rem;box-shadow:0 8px 30px rgba(192,57,43,.3);transition:all .4s var(--spring);opacity:0;transform:translateY(20px);pointer-events:none}
+.back-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.back-top:hover{transform:translateY(-4px) scale(1.1);box-shadow:0 14px 40px rgba(192,57,43,.4)}
+
+/* TOAST */
+.toast{position:fixed;bottom:3rem;left:50%;transform:translateX(-50%) translateY(100px);background:rgba(26,10,10,.92);backdrop-filter:blur(16px);color:#fff;padding:1rem 2rem;border-radius:14px;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;z-index:10002;opacity:0;transition:all .5s var(--spring);display:flex;align-items:center;gap:10px;border:1px solid rgba(255,107,107,.2);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast .t-icon{font-size:1.1rem}
+
+/* PARTICLES */
+.particle{position:fixed;pointer-events:none;z-index:9995;border-radius:50%;opacity:0}
 
 /* REVEAL */
 .rv{opacity:0;transform:translateY(35px);transition:opacity .9s var(--smooth),transform .9s var(--smooth)}
@@ -337,198 +367,24 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
 .rv-r.show{opacity:1;transform:translateX(0)}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
-/* ============================
-   RESPONSIVE BREAKPOINTS
-   ============================ */
+/* TILT */
+.tilt-card{transition:transform .3s var(--ease)}
 
-/* LARGE LAPTOP / SMALL DESKTOP (1400px) */
-@media(max-width:1400px){
-  :root{--section-px:4rem}
-  .about-grid{gap:4rem}
-}
-
-/* LAPTOP (1200px) */
-@media(max-width:1200px){
-  :root{--section-px:3rem}
-  #hero{grid-template-columns:1fr 320px;gap:3rem}
-  .about-grid{grid-template-columns:1fr 1.1fr;gap:3rem}
-  .exp-wrap{grid-template-columns:240px 1fr;gap:3rem}
-  .proj-grid{grid-template-columns:repeat(2,1fr)}
-  .ach-grid{grid-template-columns:repeat(2,1fr)}
-  .nav-links{gap:1.2rem}
-}
-
-/* TABLET LANDSCAPE (1024px) */
-@media(max-width:1024px){
-  :root{--section-px:2.5rem}
-  .nav-links{display:none}
-  .nav-cta{display:none}
-  .hamburger{display:flex}
-  .mobile-nav{display:flex}
-
-  #hero{grid-template-columns:1fr;padding-top:7rem;padding-bottom:4rem;min-height:auto}
-  .hero-panel{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:2rem}
-  .hero-card{margin-bottom:0}
-  .mini-cards{grid-column:1/-1}
-
-  .about-grid{grid-template-columns:1fr}
-  .profile-card{margin-top:1.5rem;margin-bottom:2rem}
-
-  .skills-header{grid-template-columns:1fr}
-  .skills-note{text-align:left;margin-top:1rem;max-width:none}
-  .skills-grid{grid-template-columns:repeat(2,1fr)}
-
-  .exp-wrap{grid-template-columns:1fr}
-  .exp-nav{position:static;flex-direction:row;flex-wrap:wrap;gap:6px;margin-bottom:2rem}
-  .exp-tab{border-left:none;border-bottom:2px solid rgba(231,76,60,.12);border-radius:10px;padding:.8rem 1.2rem}
-  .exp-tab.active{border-bottom-color:var(--ruby);border-left:none}
-
-  .edu-grid{grid-template-columns:repeat(2,1fr)}
-}
-
-/* TABLET PORTRAIT (768px) */
-@media(max-width:768px){
-  :root{--section-px:1.5rem}
-  .section{padding-top:5rem;padding-bottom:5rem}
-
-  nav{padding:1rem 1.5rem}
-  nav.scrolled{padding:.8rem 1.5rem}
-  .logo{font-size:1.15rem}
-
-  #hero{padding:6rem 1.5rem 3.5rem;gap:2rem}
-  .hero-name{font-size:clamp(3rem,12vw,5rem)}
-  .hero-bio{font-size:.88rem;line-height:1.85}
-  .hero-availability{font-size:.5rem;padding:.4rem 1rem;margin-bottom:1.5rem}
-  .hero-panel{grid-template-columns:1fr}
-  .mini-cards{grid-template-columns:repeat(2,1fr)}
-
-  .skills-grid{grid-template-columns:1fr}
-
-  .proj-grid{grid-template-columns:1fr}
-  .edu-grid{grid-template-columns:1fr}
-  .ach-grid{grid-template-columns:1fr}
-  .train-grid{grid-template-columns:1fr}
-
-  .stat-row{grid-template-columns:repeat(3,1fr);gap:8px}
-  .sbn{font-size:2.2rem}
-
-  .ep-role{font-size:1.6rem}
-  .ep-co{font-size:.78rem;word-break:break-word}
-
-  .contact-sub{font-size:.82rem}
-  .c-link{font-size:.68rem}
-  .soc-row{gap:8px}
-  .soc-btn{padding:.6rem 1.4rem;font-size:.5rem}
-
-  footer{flex-direction:column;text-align:center;padding:1.5rem}
-}
-
-/* MOBILE LARGE (480px) */
-@media(max-width:480px){
-  :root{--section-px:1.2rem}
-  .section{padding-top:4rem;padding-bottom:4rem}
-
-  nav{padding:.8rem 1rem}
-  nav.scrolled{padding:.6rem 1rem}
-  .logo{font-size:1rem;gap:6px}
-  .logo-icon{width:18px;height:18px}
-
-  #hero{padding:5.5rem 1.2rem 3rem}
-  .hero-name{font-size:clamp(2.8rem,14vw,4rem);margin-bottom:.8rem}
-  .hero-title{font-size:.9rem;margin-bottom:1.5rem}
-  .hero-bio{font-size:.82rem;line-height:1.8;margin-bottom:2rem}
-  .hero-greeting{font-size:.55rem;margin-bottom:.6rem}
-  .hero-actions{gap:10px}
-  .btn-primary{padding:.85rem 1.8rem;font-size:.76rem}
-  .btn-ghost{padding:.85rem 1.8rem;font-size:.76rem}
-
-  .sec-heading{margin-bottom:1.5rem}
-
-  .pc-row{padding:.7rem 1.2rem;flex-wrap:wrap;gap:4px}
-  .pc-k{font-size:.48rem}
-  .pc-v{font-size:.75rem}
-  .pc-top{padding:1rem 1.2rem}
-
-  .tags-wrap{gap:6px}
-  .tag{font-size:.48rem;padding:.35rem .85rem}
-
-  .stat-row{grid-template-columns:repeat(3,1fr);gap:6px}
-  .stat-box{padding:1rem .6rem}
-  .sbn{font-size:1.8rem}
-  .sbl{font-size:.42rem}
-
-  .sbox{padding:2rem 1.4rem}
-  .skill-name{font-size:.78rem}
-
-  .exp-tab{padding:.6rem 1rem}
-  .et-co{font-size:.78rem}
-  .et-r{font-size:.48rem}
-  .et-d{font-size:.46rem}
-  .ep-role{font-size:1.3rem}
-  .ep-list li{font-size:.78rem;gap:.6rem}
-
-  .proj-card{padding:1.6rem}
-
-  .contact-heading{line-height:.92}
-  .contact-sub{font-size:.78rem;margin:1rem 0 2rem}
-  .soc-row{flex-direction:column;align-items:center}
-  .soc-btn{width:100%;max-width:220px;text-align:center}
-
-  .mobile-nav a{font-size:1.4rem}
-
-  .hobbies-wrap{gap:8px}
-  .hobby-pill{padding:.5rem 1rem;font-size:.75rem}
-}
-
-/* MOBILE SMALL (360px) */
-@media(max-width:360px){
-  :root{--section-px:1rem}
-  .hero-name{font-size:2.5rem}
-  .mini-cards{grid-template-columns:1fr 1fr;gap:8px}
-  .mini-card{padding:.8rem}
-  .mc-v{font-size:1.6rem}
-  .stat-row{grid-template-columns:1fr 1fr 1fr}
-  .stat-box{padding:.8rem .4rem}
-  .sbn{font-size:1.5rem}
-}
-
-/* TALL PHONES - safe area */
-@supports(padding:max(0px)){
-  footer{padding-bottom:max(1.5rem, env(safe-area-inset-bottom))}
-  #contact .section{padding-bottom:max(5rem, env(safe-area-inset-bottom))}
-}
-
-/* LANDSCAPE PHONE */
-@media(max-height:500px) and (orientation:landscape){
-  #hero{min-height:auto;padding-top:5rem;padding-bottom:2rem}
-  .section{padding-top:3rem;padding-bottom:3rem}
-  #loader{gap:12px}
-  .ld-name{font-size:1.8rem}
-}
-
-/* PRINT */
-@media print{
-  .bg-canvas,#cur-dot,#cur-ring,#cur-glow,.trail-dot,#loader,.hamburger,.mobile-nav{display:none!important}
-  nav{position:static;background:#fff!important;border-bottom:1px solid #ddd}
-  body{cursor:auto}
-  .rv,.rv-l,.rv-r{opacity:1!important;transform:none!important}
-  .skill-bar{transform:scaleX(1)!important}
-}
-
-/* REDUCED MOTION */
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-  html{scroll-behavior:auto}
-}
-
-/* DARK MODE HINT - subtle adjustment for OLED */
-@media(prefers-color-scheme:dark){
-  /* Portfolio is light-themed by design, but we soften smoke layers */
-  .smoke-layer{opacity:.7}
-}
+/* RESPONSIVE */
+@media(max-width:1400px){:root{--section-px:4rem}.about-grid{gap:4rem}}
+@media(max-width:1200px){:root{--section-px:3rem}#hero{grid-template-columns:1fr 320px;gap:3rem}.about-grid{grid-template-columns:1fr 1.1fr;gap:3rem}.exp-wrap{grid-template-columns:240px 1fr;gap:3rem}.proj-grid{grid-template-columns:repeat(2,1fr)}.ach-grid{grid-template-columns:repeat(2,1fr)}.nav-links{gap:1.2rem}}
+@media(max-width:1024px){:root{--section-px:2.5rem}.nav-links{display:none}.nav-cta{display:none}.hamburger{display:flex}.mobile-nav{display:flex}#hero{grid-template-columns:1fr;padding-top:7rem;padding-bottom:4rem;min-height:auto}.hero-panel{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:2rem}.hero-card{margin-bottom:0}.mini-cards{grid-column:1/-1}.about-grid{grid-template-columns:1fr}.profile-card{margin-top:1.5rem;margin-bottom:2rem}.skills-header{grid-template-columns:1fr}.skills-note{text-align:left;margin-top:1rem;max-width:none}.skills-grid{grid-template-columns:repeat(2,1fr)}.exp-wrap{grid-template-columns:1fr}.exp-nav{position:static;flex-direction:row;flex-wrap:wrap;gap:6px;margin-bottom:2rem}.exp-tab{border-left:none;border-bottom:2px solid rgba(231,76,60,.12);border-radius:10px;padding:.8rem 1.2rem}.exp-tab.active{border-bottom-color:var(--ruby);border-left:none}.edu-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){:root{--section-px:1.5rem}.section{padding-top:5rem;padding-bottom:5rem}nav{padding:1rem 1.5rem}nav.scrolled{padding:.8rem 1.5rem}.logo{font-size:1.15rem}#hero{padding:6rem 1.5rem 3.5rem;gap:2rem}.hero-name{font-size:clamp(3rem,12vw,5rem)}.hero-bio{font-size:.88rem;line-height:1.85}.hero-availability{font-size:.5rem;padding:.4rem 1rem;margin-bottom:1.5rem}.hero-panel{grid-template-columns:1fr}.mini-cards{grid-template-columns:repeat(2,1fr)}.skills-grid{grid-template-columns:1fr}.proj-grid,.edu-grid,.ach-grid{grid-template-columns:1fr}.train-grid{grid-template-columns:1fr}.stat-row{grid-template-columns:repeat(3,1fr);gap:8px}.sbn{font-size:2.2rem}.ep-role{font-size:1.6rem}.contact-sub{font-size:.82rem}.c-link{font-size:.68rem}.soc-row{gap:8px}.soc-btn{padding:.6rem 1.4rem;font-size:.5rem}footer{flex-direction:column;text-align:center;padding:1.5rem}}
+@media(max-width:480px){:root{--section-px:1.2rem}.section{padding-top:4rem;padding-bottom:4rem}nav{padding:.8rem 1rem}nav.scrolled{padding:.6rem 1rem}.logo{font-size:1rem;gap:6px}.logo-icon{width:18px;height:18px}#hero{padding:5.5rem 1.2rem 3rem}.hero-name{font-size:clamp(2.8rem,14vw,4rem);margin-bottom:.8rem}.hero-title{font-size:.9rem;margin-bottom:1.5rem}.hero-bio{font-size:.82rem;line-height:1.8;margin-bottom:2rem}.hero-greeting{font-size:.55rem;margin-bottom:.6rem}.hero-actions{gap:10px}.btn-primary{padding:.85rem 1.8rem;font-size:.76rem}.btn-ghost{padding:.85rem 1.8rem;font-size:.76rem}.soc-row{flex-direction:column;align-items:center}.soc-btn{width:100%;max-width:220px;text-align:center}.mobile-nav a{font-size:1.4rem}.hobby-pill{padding:.5rem 1rem;font-size:.75rem}}
+@media(max-width:360px){:root{--section-px:1rem}.hero-name{font-size:2.5rem}.mini-cards{grid-template-columns:1fr 1fr;gap:8px}.mini-card{padding:.8rem}.mc-v{font-size:1.6rem}.stat-box{padding:.8rem .4rem}.sbn{font-size:1.5rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+@media print{.bg-canvas,#cur-dot,#cur-ring,#cur-glow,.trail-dot,#loader,.hamburger,.mobile-nav,.scroll-progress,.back-top{display:none!important}nav{position:static;background:#fff!important;border-bottom:1px solid #ddd}body{cursor:auto}.rv,.rv-l,.rv-r{opacity:1!important;transform:none!important}.skill-bar{transform:scaleX(1)!important}}
 </style>
 </head>
 <body>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- LOADER -->
 <div id="loader">
@@ -540,14 +396,8 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
 </div>
 
 <!-- CURSOR -->
-<div id="cur-dot"></div>
-<div id="cur-ring"></div>
-<div id="cur-glow"></div>
-<div class="trail-dot" id="t0"></div>
-<div class="trail-dot" id="t1"></div>
-<div class="trail-dot" id="t2"></div>
-<div class="trail-dot" id="t3"></div>
-<div class="trail-dot" id="t4"></div>
+<div id="cur-dot"></div><div id="cur-ring"></div><div id="cur-glow"></div>
+<div class="trail-dot" id="t0"></div><div class="trail-dot" id="t1"></div><div class="trail-dot" id="t2"></div><div class="trail-dot" id="t3"></div><div class="trail-dot" id="t4"></div>
 
 <!-- BG SMOKE -->
 <div class="bg-canvas">
@@ -566,30 +416,13 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
     Sachin Mishra
   </a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#training">Training</a></li>
-    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#education">Education</a></li><li><a href="#training">Training</a></li><li><a href="#achievements">Achievements</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Hire Me</a>
-  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
 </nav>
-
-<!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav">
-  <a href="#about">About</a>
-  <a href="#skills">Skills</a>
-  <a href="#experience">Experience</a>
-  <a href="#projects">Projects</a>
-  <a href="#education">Education</a>
-  <a href="#training">Training</a>
-  <a href="#achievements">Achievements</a>
-  <a href="#contact" class="nav-cta">Hire Me</a>
+  <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#training">Training</a><a href="#achievements">Achievements</a><a href="#contact" class="nav-cta">Hire Me</a>
 </div>
 
 <!-- HERO -->
@@ -598,26 +431,26 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
     <div class="hero-availability"><div class="avail-pulse"></div>Available for Opportunities</div>
     <p class="hero-greeting">Hello, I'm</p>
     <h1 class="hero-name"><span class="fn">Sachin</span><span class="ln">Mishra</span></h1>
-    <div class="hero-title">Software Engineer <span>&amp;</span> Consultant</div>
+    <div class="hero-title" id="heroTitle"></div>
     <p class="hero-bio">
       <strong>Motivated & results-driven .NET Developer</strong> with expertise in <em>ASP.NET Core, C#, Kafka, Angular</em> and Microservices. Currently at <strong>Axtrics Solutions</strong> building healthcare RCM platforms serving the USA. MCA Topper with a passion for clean architecture, SOLID principles, and emerging tech like <em>AR/VR & Blockchain</em>.
     </p>
     <div class="hero-actions">
       <a href="#experience" class="btn-primary"><span>View My Work</span><span class="ico">→</span></a>
-      <a href="#contact" class="btn-ghost">Get In Touch</a>
+      <button class="btn-ghost" id="downloadCvHero" onclick="generateCV()">Download CV ↓</button>
     </div>
   </div>
   <div class="hero-panel">
-    <div class="hero-card">
+    <div class="hero-card tilt-card">
       <div class="hc-badge">Current Role</div>
       <div class="hc-value">.NET Dev</div>
       <div class="hc-desc">Axtrics Solutions · Mohali, India</div>
     </div>
     <div class="mini-cards">
-      <div class="mini-card"><div class="mc-v">2+</div><div class="mc-l">Years Exp.</div></div>
-      <div class="mini-card"><div class="mc-v">3+</div><div class="mc-l">Companies</div></div>
-      <div class="mini-card"><div class="mc-v">5+</div><div class="mc-l">Projects</div></div>
-      <div class="mini-card"><div class="mc-v">82%</div><div class="mc-l">MCA Topper</div></div>
+      <div class="mini-card tilt-card"><div class="mc-v" data-count="2">0</div><div class="mc-l">Years Exp.</div></div>
+      <div class="mini-card tilt-card"><div class="mc-v" data-count="3">0</div><div class="mc-l">Companies</div></div>
+      <div class="mini-card tilt-card"><div class="mc-v" data-count="5">0</div><div class="mc-l">Projects</div></div>
+      <div class="mini-card tilt-card"><div class="mc-v" data-count="82">0</div><div class="mc-l">MCA Topper</div></div>
     </div>
   </div>
 </section>
@@ -638,9 +471,7 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
       <h2 class="sec-heading">The Developer<br><em>Behind the Code</em></h2>
       <div class="profile-card">
         <div class="pc-top">
-          <div class="pc-dot" style="background:#e5534b"></div>
-          <div class="pc-dot" style="background:#daaa3f;margin-left:5px"></div>
-          <div class="pc-dot" style="background:#3fb950;margin-left:5px"></div>
+          <div class="pc-dot" style="background:#e5534b"></div><div class="pc-dot" style="background:#daaa3f;margin-left:5px"></div><div class="pc-dot" style="background:#3fb950;margin-left:5px"></div>
           <span class="pc-file" style="margin-left:8px">profile.json</span>
         </div>
         <div class="pc-row"><span class="pc-k">Location</span><span class="pc-v">Chandigarh, India</span></div>
@@ -648,7 +479,7 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
         <div class="pc-row"><span class="pc-k">Phone</span><span class="pc-v">8887930549 / 9621497631</span></div>
         <div class="pc-row"><span class="pc-k">Status</span><span class="pc-v"><span class="live-badge"><span class="live-dot"></span>Open to Work</span></span></div>
         <div class="pc-row"><span class="pc-k">LinkedIn</span><span class="pc-v"><a href="https://www.linkedin.com/in/sachin-mishra-325754201" target="_blank">sachin-mishra</a></span></div>
-        <div class="pc-row"><span class="pc-k">Date</span><span class="pc-v">17 March 2026</span></div>
+        <div class="pc-row"><span class="pc-k">Date</span><span class="pc-v" id="liveDate"></span></div>
       </div>
     </div>
     <div class="about-body rv-r">
@@ -670,16 +501,12 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
 <!-- SKILLS -->
 <section id="skills" class="section">
   <div class="skills-header rv">
-    <div>
-      <div class="sec-eyebrow">02 — Tech Stack</div>
-      <h2 class="sec-heading">Skills &<br><em>Expertise</em></h2>
-    </div>
+    <div><div class="sec-eyebrow">02 — Tech Stack</div><h2 class="sec-heading">Skills &<br><em>Expertise</em></h2></div>
     <div class="skills-note">Crafting performant, maintainable systems with a full-stack perspective — backend-first, always scalable.</div>
   </div>
   <div class="skills-grid rv">
     <div class="sbox">
-      <div class="sbox-label">.NET & Backend</div>
-      <div class="sbox-title">Core Engineering</div>
+      <div class="sbox-label">.NET & Backend</div><div class="sbox-title">Core Engineering</div>
       <div class="skill"><div class="skill-top"><span class="skill-name">ASP.NET Core / MVC</span><span class="skill-pct">92%</span></div><div class="skill-track"><div class="skill-bar bar-a" data-w=".92"></div></div></div>
       <div class="skill"><div class="skill-top"><span class="skill-name">C# / OOP & SOLID</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-bar bar-a" data-w=".90"></div></div></div>
       <div class="skill"><div class="skill-top"><span class="skill-name">Web API / REST</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-bar bar-a" data-w=".88"></div></div></div>
@@ -688,8 +515,7 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
       <div class="skill"><div class="skill-top"><span class="skill-name">Windows Services</span><span class="skill-pct">78%</span></div><div class="skill-track"><div class="skill-bar bar-a" data-w=".78"></div></div></div>
     </div>
     <div class="sbox">
-      <div class="sbox-label">Frontend & Database</div>
-      <div class="sbox-title">Interface & Data</div>
+      <div class="sbox-label">Frontend & Database</div><div class="sbox-title">Interface & Data</div>
       <div class="skill"><div class="skill-top"><span class="skill-name">Angular</span><span class="skill-pct">82%</span></div><div class="skill-track"><div class="skill-bar bar-b" data-w=".82"></div></div></div>
       <div class="skill"><div class="skill-top"><span class="skill-name">React.js</span><span class="skill-pct">70%</span></div><div class="skill-track"><div class="skill-bar bar-b" data-w=".70"></div></div></div>
       <div class="skill"><div class="skill-top"><span class="skill-name">HTML / CSS / JavaScript</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-bar bar-b" data-w=".85"></div></div></div>
@@ -698,8 +524,7 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
       <div class="skill"><div class="skill-top"><span class="skill-name">JWT Authentication</span><span class="skill-pct">82%</span></div><div class="skill-track"><div class="skill-bar bar-b" data-w=".82"></div></div></div>
     </div>
     <div class="sbox">
-      <div class="sbox-label">DevOps, Cloud & Emerging</div>
-      <div class="sbox-title">Cloud & Systems</div>
+      <div class="sbox-label">DevOps, Cloud & Emerging</div><div class="sbox-title">Cloud & Systems</div>
       <div class="skill"><div class="skill-top"><span class="skill-name">Docker</span><span class="skill-pct">75%</span></div><div class="skill-track"><div class="skill-bar bar-c" data-w=".75"></div></div></div>
       <div class="skill"><div class="skill-top"><span class="skill-name">Azure Cloud</span><span class="skill-pct">72%</span></div><div class="skill-track"><div class="skill-bar bar-c" data-w=".72"></div></div></div>
       <div class="skill"><div class="skill-top"><span class="skill-name">Multitenant Architecture</span><span class="skill-pct">78%</span></div><div class="skill-track"><div class="skill-bar bar-c" data-w=".78"></div></div></div>
@@ -715,45 +540,19 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
 
 <!-- EXPERIENCE -->
 <section id="experience" class="section">
-  <div class="rv">
-    <div class="sec-eyebrow">03 — Work Experience</div>
-    <h2 class="sec-heading">Where I've<br><em>Made an Impact</em></h2>
-  </div>
+  <div class="rv"><div class="sec-eyebrow">03 — Work Experience</div><h2 class="sec-heading">Where I've<br><em>Made an Impact</em></h2></div>
   <div class="exp-wrap rv">
     <div class="exp-nav">
-      <div class="exp-tab active" data-tab="0">
-        <div class="et-co">Axtrics Solutions</div>
-        <div class="et-r">Dot Net Developer</div>
-        <div class="et-d">Oct 2024 – Present</div>
-      </div>
-      <div class="exp-tab" data-tab="1">
-        <div class="et-co">UTC Digital Technologies</div>
-        <div class="et-r">Software Engineer</div>
-        <div class="et-d">Jun 2024 – Sep 2024</div>
-      </div>
-      <div class="exp-tab" data-tab="2">
-        <div class="et-co">MCN Solutions</div>
-        <div class="et-r">Software Engineer</div>
-        <div class="et-d">Aug 2023 – Apr 2024</div>
-      </div>
-      <div class="exp-tab" data-tab="3">
-        <div class="et-co">MCN Solutions</div>
-        <div class="et-r">Software Trainee</div>
-        <div class="et-d">Mar 2023 – Aug 2023</div>
-      </div>
+      <div class="exp-tab active" data-tab="0"><div class="et-co">Axtrics Solutions</div><div class="et-r">Dot Net Developer</div><div class="et-d">Oct 2024 – Present</div></div>
+      <div class="exp-tab" data-tab="1"><div class="et-co">UTC Digital Technologies</div><div class="et-r">Software Engineer</div><div class="et-d">Jun 2024 – Sep 2024</div></div>
+      <div class="exp-tab" data-tab="2"><div class="et-co">MCN Solutions</div><div class="et-r">Software Engineer</div><div class="et-d">Aug 2023 – Apr 2024</div></div>
+      <div class="exp-tab" data-tab="3"><div class="et-co">MCN Solutions</div><div class="et-r">Software Trainee</div><div class="et-d">Mar 2023 – Aug 2023</div></div>
     </div>
     <div class="exp-panels">
       <div class="exp-panel active">
-        <div class="ep-head">
-          <div class="ep-role">Dot Net Developer</div>
-          <div class="ep-co">Axtrics Solutions Pvt. Ltd. · Plot D266-P, Phase 8B, Mohali, Punjab 160071</div>
-          <div class="ep-loc">Oct 2024 – Present · Mohali, Punjab, India</div>
-        </div>
-        <div class="ep-proj">
-          <div class="ep-proj-info"><div class="epl">Project 1</div><div class="epn">Catalyst RCM</div></div>
-          <a href="https://catalystrcm.com/" target="_blank" class="ep-link">Visit Site ↗</a>
-        </div>
-        <p class="ep-desc">Healthcare Revenue Cycle Management platform for US healthcare providers to manage billing, claims, and payments using a scalable multitenant architecture. Axtrics drives digital transformation for companies in 10+ countries.</p>
+        <div class="ep-head"><div class="ep-role">Dot Net Developer</div><div class="ep-co">Axtrics Solutions Pvt. Ltd. · Plot D266-P, Phase 8B, Mohali, Punjab 160071</div><div class="ep-loc">Oct 2024 – Present · Mohali, Punjab, India</div></div>
+        <div class="ep-proj"><div class="ep-proj-info"><div class="epl">Project 1</div><div class="epn">Catalyst RCM</div></div><a href="https://catalystrcm.com/" target="_blank" class="ep-link">Visit Site ↗</a></div>
+        <p class="ep-desc">Healthcare Revenue Cycle Management platform for US healthcare providers to manage billing, claims, and payments using a scalable multitenant architecture.</p>
         <ul class="ep-list">
           <li><span class="li-icon"></span>Developed backend Web APIs using .NET Core, C# and ASP.NET for RCM workflows</li>
           <li><span class="li-icon"></span>Implemented Kafka for asynchronous service communication and event streaming pipelines</li>
@@ -762,30 +561,19 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
           <li><span class="li-icon"></span>Containerized services with Docker and deployed on Azure cloud infrastructure</li>
           <li><span class="li-icon"></span>Integrated backend APIs with Angular and React frontend components</li>
         </ul>
-        <div class="ep-proj" style="margin-top:1.5rem">
-          <div class="ep-proj-info"><div class="epl">Project 2</div><div class="epn">Admin Management System (Angular + .NET Core)</div></div>
-        </div>
+        <div class="ep-proj" style="margin-top:1.5rem"><div class="ep-proj-info"><div class="epl">Project 2</div><div class="epn">Admin Management System (Angular + .NET Core)</div></div></div>
         <p class="ep-desc">Role-based admin dashboard to manage users, roles, permissions, and application data. Duration: Oct 2024 – Oct 2025.</p>
         <ul class="ep-list">
           <li><span class="li-icon"></span>Developed Angular-based admin UI with CRUD operations, pagination and validation</li>
           <li><span class="li-icon"></span>Integrated REST APIs developed in .NET Core Web API</li>
           <li><span class="li-icon"></span>Implemented JWT authentication and role-based authorization</li>
         </ul>
-        <div class="ep-tags-row">
-          <span class="ep-tag">.NET Core</span><span class="ep-tag">C#</span><span class="ep-tag">Kafka</span><span class="ep-tag">Microservices</span><span class="ep-tag">Angular</span><span class="ep-tag">SQL</span><span class="ep-tag">Docker</span><span class="ep-tag">Azure</span><span class="ep-tag">React</span><span class="ep-tag">EF Core</span><span class="ep-tag">ADO.NET</span><span class="ep-tag">Dapper</span><span class="ep-tag">MVC</span><span class="ep-tag">Web API</span><span class="ep-tag">JWT</span><span class="ep-tag">Unit Testing</span><span class="ep-tag">Windows Services</span>
-        </div>
+        <div class="ep-tags-row"><span class="ep-tag">.NET Core</span><span class="ep-tag">C#</span><span class="ep-tag">Kafka</span><span class="ep-tag">Microservices</span><span class="ep-tag">Angular</span><span class="ep-tag">SQL</span><span class="ep-tag">Docker</span><span class="ep-tag">Azure</span><span class="ep-tag">React</span><span class="ep-tag">EF Core</span><span class="ep-tag">ADO.NET</span><span class="ep-tag">Dapper</span><span class="ep-tag">MVC</span><span class="ep-tag">Web API</span><span class="ep-tag">JWT</span><span class="ep-tag">Unit Testing</span><span class="ep-tag">Windows Services</span></div>
       </div>
       <div class="exp-panel">
-        <div class="ep-head">
-          <div class="ep-role">Software Engineer</div>
-          <div class="ep-co">UTC Digital Technologies Pvt. Ltd. · 603, 6th Floor, Shekhar Central, Indore, M.P. 452001</div>
-          <div class="ep-loc">Jun 2024 – Sep 2024 · Indore, Madhya Pradesh</div>
-        </div>
-        <div class="ep-proj">
-          <div class="ep-proj-info"><div class="epl">Project</div><div class="epn">Digi2L</div></div>
-          <a href="https://digi2l.co.in/" target="_blank" class="ep-link">Visit Site ↗</a>
-        </div>
-        <p class="ep-desc">Online platform that enables users to sell used appliances with instant price evaluation and hassle-free transactions across India. A fast-growing recommerce platform.</p>
+        <div class="ep-head"><div class="ep-role">Software Engineer</div><div class="ep-co">UTC Digital Technologies Pvt. Ltd. · Indore, M.P.</div><div class="ep-loc">Jun 2024 – Sep 2024 · Indore, Madhya Pradesh</div></div>
+        <div class="ep-proj"><div class="ep-proj-info"><div class="epl">Project</div><div class="epn">Digi2L</div></div><a href="https://digi2l.co.in/" target="_blank" class="ep-link">Visit Site ↗</a></div>
+        <p class="ep-desc">Online platform that enables users to sell used appliances with instant price evaluation and hassle-free transactions across India.</p>
         <ul class="ep-list">
           <li><span class="li-icon"></span>Developed backend modules using .NET Core and MVC for the appliance trade-in platform</li>
           <li><span class="li-icon"></span>Built REST APIs for product listing, user management and price evaluation logic</li>
@@ -793,21 +581,12 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
           <li><span class="li-icon"></span>Worked with Razor Pages and Entity Framework for ORM-based data operations</li>
           <li><span class="li-icon"></span>Improved application performance and resolved production bugs</li>
         </ul>
-        <div class="ep-tags-row">
-          <span class="ep-tag">.NET Core</span><span class="ep-tag">C#</span><span class="ep-tag">MVC</span><span class="ep-tag">Razor Pages</span><span class="ep-tag">SQL</span><span class="ep-tag">ADO.NET</span><span class="ep-tag">Entity Framework</span>
-        </div>
+        <div class="ep-tags-row"><span class="ep-tag">.NET Core</span><span class="ep-tag">C#</span><span class="ep-tag">MVC</span><span class="ep-tag">Razor Pages</span><span class="ep-tag">SQL</span><span class="ep-tag">ADO.NET</span><span class="ep-tag">Entity Framework</span></div>
       </div>
       <div class="exp-panel">
-        <div class="ep-head">
-          <div class="ep-role">Software Engineer</div>
-          <div class="ep-co">MCN Solutions Pvt. Ltd. · H-217, Sector-63, Noida, UP</div>
-          <div class="ep-loc">Aug 2023 – Apr 2024 · Sector-63, Noida, UP</div>
-        </div>
-        <div class="ep-proj">
-          <div class="ep-proj-info"><div class="epl">Project</div><div class="epn">C-SharpCorner.com</div></div>
-          <a href="https://www.c-sharpcorner.com/" target="_blank" class="ep-link">Visit Site ↗</a>
-        </div>
-        <p class="ep-desc">C-SharpCorner.com is a leading global developer platform with 10M+ monthly readers, offering articles, tutorials, forums, and code samples on C#, .NET, and web development.</p>
+        <div class="ep-head"><div class="ep-role">Software Engineer</div><div class="ep-co">MCN Solutions Pvt. Ltd. · Sector-63, Noida, UP</div><div class="ep-loc">Aug 2023 – Apr 2024 · Noida, UP</div></div>
+        <div class="ep-proj"><div class="ep-proj-info"><div class="epl">Project</div><div class="epn">C-SharpCorner.com</div></div><a href="https://www.c-sharpcorner.com/" target="_blank" class="ep-link">Visit Site ↗</a></div>
+        <p class="ep-desc">Leading global developer platform with 10M+ monthly readers offering articles, tutorials, forums, and code samples.</p>
         <ul class="ep-list">
           <li><span class="li-icon"></span>Contributed to feature development on a platform serving millions of developers globally</li>
           <li><span class="li-icon"></span>Built ASP.NET Core modules for content management and user features</li>
@@ -815,29 +594,18 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
           <li><span class="li-icon"></span>Maintained and enhanced existing functionalities; resolved production issues</li>
           <li><span class="li-icon"></span>Collaborated in an Agile team delivering bi-weekly feature releases</li>
         </ul>
-        <div class="ep-tags-row">
-          <span class="ep-tag">ASP.NET</span><span class="ep-tag">.NET Core</span><span class="ep-tag">C#</span><span class="ep-tag">MVC</span><span class="ep-tag">SQL</span><span class="ep-tag">ADO.NET</span>
-        </div>
+        <div class="ep-tags-row"><span class="ep-tag">ASP.NET</span><span class="ep-tag">.NET Core</span><span class="ep-tag">C#</span><span class="ep-tag">MVC</span><span class="ep-tag">SQL</span><span class="ep-tag">ADO.NET</span></div>
       </div>
       <div class="exp-panel">
-        <div class="ep-head">
-          <div class="ep-role">Software Trainee</div>
-          <div class="ep-co">MCN Solutions Pvt. Ltd. · H-217, Sector-63, Noida, UP</div>
-          <div class="ep-loc">Mar 2023 – Aug 2023 · Sector-63, Noida, UP</div>
-        </div>
-        <div class="ep-proj">
-          <div class="ep-proj-info"><div class="epl">Project</div><div class="epn">C-SharpCorner.com</div></div>
-          <a href="https://www.c-sharpcorner.com/" target="_blank" class="ep-link">Visit Site ↗</a>
-        </div>
-        <p class="ep-desc">My first professional role — learned real-world software development practices working on a high-traffic developer platform used by millions worldwide.</p>
+        <div class="ep-head"><div class="ep-role">Software Trainee</div><div class="ep-co">MCN Solutions Pvt. Ltd. · Sector-63, Noida, UP</div><div class="ep-loc">Mar 2023 – Aug 2023 · Noida, UP</div></div>
+        <div class="ep-proj"><div class="ep-proj-info"><div class="epl">Project</div><div class="epn">C-SharpCorner.com</div></div><a href="https://www.c-sharpcorner.com/" target="_blank" class="ep-link">Visit Site ↗</a></div>
+        <p class="ep-desc">First professional role — learned real-world software development practices on a high-traffic developer platform.</p>
         <ul class="ep-list">
           <li><span class="li-icon"></span>Learned ASP.NET Core and MVC patterns under senior developer mentorship</li>
           <li><span class="li-icon"></span>Built small features and bug fixes for the C-SharpCorner platform</li>
           <li><span class="li-icon"></span>Gained proficiency in Visual Studio, SQL Server, and version control workflows</li>
         </ul>
-        <div class="ep-tags-row">
-          <span class="ep-tag">ASP.NET</span><span class="ep-tag">ASP.NET Core</span><span class="ep-tag">MVC</span><span class="ep-tag">SQL</span><span class="ep-tag">C#</span><span class="ep-tag">Visual Studio</span>
-        </div>
+        <div class="ep-tags-row"><span class="ep-tag">ASP.NET</span><span class="ep-tag">ASP.NET Core</span><span class="ep-tag">MVC</span><span class="ep-tag">SQL</span><span class="ep-tag">C#</span><span class="ep-tag">Visual Studio</span></div>
       </div>
     </div>
   </div>
@@ -845,168 +613,50 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
 
 <!-- PROJECTS -->
 <section id="projects" class="section">
-  <div class="rv">
-    <div class="sec-eyebrow">04 — Projects</div>
-    <h2 class="sec-heading">Work I've<br><em>Built & Shipped</em></h2>
-  </div>
+  <div class="rv"><div class="sec-eyebrow">04 — Projects</div><h2 class="sec-heading">Work I've<br><em>Built & Shipped</em></h2></div>
   <div class="proj-grid">
-    <div class="proj-card rv">
-      <div class="proj-stripe ps-a"></div>
-      <span class="proj-icon">🏥</span>
-      <div class="proj-title">Catalyst RCM</div>
-      <div class="proj-co">Axtrics Solutions Pvt. Ltd.</div>
-      <div class="proj-dur">Oct 2024 – Present</div>
-      <p class="proj-desc">Healthcare Revenue Cycle Management platform for US providers managing billing, claims, and payments via scalable multitenant microservices architecture.</p>
-      <div class="proj-tech"><span class="pt">.NET Core</span><span class="pt">Kafka</span><span class="pt">Microservices</span><span class="pt">Angular</span><span class="pt">Docker</span><span class="pt">Azure</span><span class="pt">Dapper</span><span class="pt">SQL Server</span></div>
-      <a href="https://catalystrcm.com/" target="_blank" class="proj-link">Visit Site ↗</a>
-    </div>
-    <div class="proj-card rv d1">
-      <div class="proj-stripe ps-b"></div>
-      <span class="proj-icon">🛡️</span>
-      <div class="proj-title">Admin Management System</div>
-      <div class="proj-co">Axtrics Solutions Pvt. Ltd.</div>
-      <div class="proj-dur">Oct 2024 – Oct 2025</div>
-      <p class="proj-desc">Role-based admin dashboard for managing users, roles, permissions, and application data with JWT authentication and Angular-driven UI.</p>
-      <div class="proj-tech"><span class="pt">Angular</span><span class="pt">.NET Core</span><span class="pt">JWT</span><span class="pt">REST API</span><span class="pt">Entity Framework</span><span class="pt">SQL Server</span></div>
-    </div>
-    <div class="proj-card rv d2">
-      <div class="proj-stripe ps-c"></div>
-      <span class="proj-icon">📱</span>
-      <div class="proj-title">Digi2L</div>
-      <div class="proj-co">UTC Digital Technologies Pvt. Ltd.</div>
-      <div class="proj-dur">Jun 2024 – Sep 2024</div>
-      <p class="proj-desc">Online platform enabling users to sell used appliances with instant price evaluation and hassle-free transactions across India.</p>
-      <div class="proj-tech"><span class="pt">.NET Core</span><span class="pt">MVC</span><span class="pt">Razor Pages</span><span class="pt">Entity Framework</span><span class="pt">SQL Server</span></div>
-      <a href="https://digi2l.co.in/" target="_blank" class="proj-link">Visit Site ↗</a>
-    </div>
-    <div class="proj-card rv">
-      <div class="proj-stripe ps-a"></div>
-      <span class="proj-icon">💻</span>
-      <div class="proj-title">C-SharpCorner.com</div>
-      <div class="proj-co">MCN Solutions Pvt. Ltd.</div>
-      <div class="proj-dur">Apr 2023 – Apr 2024</div>
-      <p class="proj-desc">Large-scale global developer community platform with 10M+ monthly readers offering articles, tutorials, forums, and coding resources for .NET developers.</p>
-      <div class="proj-tech"><span class="pt">ASP.NET</span><span class="pt">.NET Core</span><span class="pt">C#</span><span class="pt">MVC</span><span class="pt">SQL Server</span><span class="pt">ADO.NET</span></div>
-      <a href="https://www.c-sharpcorner.com/" target="_blank" class="proj-link">Visit Site ↗</a>
-    </div>
-    <div class="proj-card rv d1">
-      <div class="proj-stripe ps-d"></div>
-      <span class="proj-icon">⛓️</span>
-      <div class="proj-title">NEAR Blockchain Wallet App</div>
-      <div class="proj-co">MCN Solutions Pvt. Ltd.</div>
-      <div class="proj-dur">3–4 Months</div>
-      <p class="proj-desc">Blockchain-based wallet on NEAR Protocol for securely managing digital assets, transactions, account creation, balance checks, and transaction history.</p>
-      <div class="proj-tech"><span class="pt">NEAR Protocol</span><span class="pt">Blockchain</span><span class="pt">JavaScript</span><span class="pt">Smart Contracts</span><span class="pt">REST API</span><span class="pt">Web3</span></div>
-    </div>
-    <div class="proj-card rv d2">
-      <div class="proj-stripe ps-e"></div>
-      <span class="proj-icon">🦁</span>
-      <div class="proj-title">AR Zoo Visual Application</div>
-      <div class="proj-co">TeckXR · Certified IIT Roorkee</div>
-      <div class="proj-dur">Jan 2023 – Mar 2023</div>
-      <p class="proj-desc">AR-powered zoo visualisation mobile and desktop application built to visualise zoo experiences using AR Cube interactive technology for an immersive audience.</p>
-      <div class="proj-tech"><span class="pt">Unity</span><span class="pt">Vuforia</span><span class="pt">AR/VR</span><span class="pt">C#</span><span class="pt">3D Models</span></div>
-    </div>
+    <div class="proj-card rv tilt-card"><div class="proj-stripe ps-a"></div><span class="proj-icon">🏥</span><div class="proj-title">Catalyst RCM</div><div class="proj-co">Axtrics Solutions Pvt. Ltd.</div><div class="proj-dur">Oct 2024 – Present</div><p class="proj-desc">Healthcare Revenue Cycle Management platform for US providers managing billing, claims, and payments via scalable multitenant microservices architecture.</p><div class="proj-tech"><span class="pt">.NET Core</span><span class="pt">Kafka</span><span class="pt">Microservices</span><span class="pt">Angular</span><span class="pt">Docker</span><span class="pt">Azure</span><span class="pt">Dapper</span><span class="pt">SQL Server</span></div><a href="https://catalystrcm.com/" target="_blank" class="proj-link">Visit Site ↗</a></div>
+    <div class="proj-card rv d1 tilt-card"><div class="proj-stripe ps-b"></div><span class="proj-icon">🛡️</span><div class="proj-title">Admin Management System</div><div class="proj-co">Axtrics Solutions Pvt. Ltd.</div><div class="proj-dur">Oct 2024 – Oct 2025</div><p class="proj-desc">Role-based admin dashboard for managing users, roles, permissions, and application data with JWT authentication and Angular-driven UI.</p><div class="proj-tech"><span class="pt">Angular</span><span class="pt">.NET Core</span><span class="pt">JWT</span><span class="pt">REST API</span><span class="pt">Entity Framework</span><span class="pt">SQL Server</span></div></div>
+    <div class="proj-card rv d2 tilt-card"><div class="proj-stripe ps-c"></div><span class="proj-icon">📱</span><div class="proj-title">Digi2L</div><div class="proj-co">UTC Digital Technologies Pvt. Ltd.</div><div class="proj-dur">Jun 2024 – Sep 2024</div><p class="proj-desc">Online platform enabling users to sell used appliances with instant price evaluation and hassle-free transactions across India.</p><div class="proj-tech"><span class="pt">.NET Core</span><span class="pt">MVC</span><span class="pt">Razor Pages</span><span class="pt">Entity Framework</span><span class="pt">SQL Server</span></div><a href="https://digi2l.co.in/" target="_blank" class="proj-link">Visit Site ↗</a></div>
+    <div class="proj-card rv tilt-card"><div class="proj-stripe ps-a"></div><span class="proj-icon">💻</span><div class="proj-title">C-SharpCorner.com</div><div class="proj-co">MCN Solutions Pvt. Ltd.</div><div class="proj-dur">Apr 2023 – Apr 2024</div><p class="proj-desc">Large-scale global developer community platform with 10M+ monthly readers offering articles, tutorials, forums, and coding resources.</p><div class="proj-tech"><span class="pt">ASP.NET</span><span class="pt">.NET Core</span><span class="pt">C#</span><span class="pt">MVC</span><span class="pt">SQL Server</span><span class="pt">ADO.NET</span></div><a href="https://www.c-sharpcorner.com/" target="_blank" class="proj-link">Visit Site ↗</a></div>
+    <div class="proj-card rv d1 tilt-card"><div class="proj-stripe ps-d"></div><span class="proj-icon">⛓️</span><div class="proj-title">NEAR Blockchain Wallet App</div><div class="proj-co">MCN Solutions Pvt. Ltd.</div><div class="proj-dur">3–4 Months</div><p class="proj-desc">Blockchain-based wallet on NEAR Protocol for securely managing digital assets, transactions, and account operations.</p><div class="proj-tech"><span class="pt">NEAR Protocol</span><span class="pt">Blockchain</span><span class="pt">JavaScript</span><span class="pt">Smart Contracts</span><span class="pt">REST API</span><span class="pt">Web3</span></div></div>
+    <div class="proj-card rv d2 tilt-card"><div class="proj-stripe ps-e"></div><span class="proj-icon">🦁</span><div class="proj-title">AR Zoo Visual Application</div><div class="proj-co">TeckXR · Certified IIT Roorkee</div><div class="proj-dur">Jan 2023 – Mar 2023</div><p class="proj-desc">AR-powered zoo visualisation mobile and desktop application built with AR Cube interactive technology.</p><div class="proj-tech"><span class="pt">Unity</span><span class="pt">Vuforia</span><span class="pt">AR/VR</span><span class="pt">C#</span><span class="pt">3D Models</span></div></div>
   </div>
 </section>
 
 <!-- EDUCATION -->
 <section id="education" class="section">
-  <div class="rv">
-    <div class="sec-eyebrow">05 — Education</div>
-    <h2 class="sec-heading">Academic<br><em>Background</em></h2>
-  </div>
+  <div class="rv"><div class="sec-eyebrow">05 — Education</div><h2 class="sec-heading">Academic<br><em>Background</em></h2></div>
   <div class="edu-grid">
-    <div class="edu-card rv">
-      <div class="edu-stripe ps-a"></div>
-      <div class="edu-icon">🎓</div>
-      <div class="edu-deg">Master of Computer Application (MCA)</div>
-      <div class="edu-uni">CSJMU (UIET) Kanpur</div>
-      <div class="edu-meta">
-        <div class="em-row"><span class="em-k">Year</span><span class="em-v">2023</span></div>
-        <div class="em-row"><span class="em-k">Score</span><span class="em-v">82.61%</span></div>
-      </div>
-      <span class="edu-badge badge-a">🏆 3rd University Topper</span>
-    </div>
-    <div class="edu-card rv d1">
-      <div class="edu-stripe ps-b"></div>
-      <div class="edu-icon">📚</div>
-      <div class="edu-deg">Bachelor of Computer Application (BCA)</div>
-      <div class="edu-uni">CSJM University</div>
-      <div class="edu-meta">
-        <div class="em-row"><span class="em-k">Year</span><span class="em-v">2021</span></div>
-        <div class="em-row"><span class="em-k">Score</span><span class="em-v">67.19%</span></div>
-      </div>
-      <span class="edu-badge badge-b">Computer Science</span>
-    </div>
-    <div class="edu-card rv d2">
-      <div class="edu-stripe ps-c"></div>
-      <div class="edu-icon">📖</div>
-      <div class="edu-deg">Intermediate Examination</div>
-      <div class="edu-uni">UP Board</div>
-      <div class="edu-meta">
-        <div class="em-row"><span class="em-k">Year</span><span class="em-v">2017</span></div>
-        <div class="em-row"><span class="em-k">Score</span><span class="em-v">68.00%</span></div>
-      </div>
-      <span class="edu-badge badge-b">UP Board Certified</span>
-    </div>
+    <div class="edu-card rv tilt-card"><div class="edu-stripe ps-a"></div><div class="edu-icon">🎓</div><div class="edu-deg">Master of Computer Application (MCA)</div><div class="edu-uni">CSJMU (UIET) Kanpur</div><div class="edu-meta"><div class="em-row"><span class="em-k">Year</span><span class="em-v">2023</span></div><div class="em-row"><span class="em-k">Score</span><span class="em-v">82.61%</span></div></div><span class="edu-badge badge-a">🏆 3rd University Topper</span></div>
+    <div class="edu-card rv d1 tilt-card"><div class="edu-stripe ps-b"></div><div class="edu-icon">📚</div><div class="edu-deg">Bachelor of Computer Application (BCA)</div><div class="edu-uni">CSJM University</div><div class="edu-meta"><div class="em-row"><span class="em-k">Year</span><span class="em-v">2021</span></div><div class="em-row"><span class="em-k">Score</span><span class="em-v">67.19%</span></div></div><span class="edu-badge badge-b">Computer Science</span></div>
+    <div class="edu-card rv d2 tilt-card"><div class="edu-stripe ps-c"></div><div class="edu-icon">📖</div><div class="edu-deg">Intermediate Examination</div><div class="edu-uni">UP Board</div><div class="edu-meta"><div class="em-row"><span class="em-k">Year</span><span class="em-v">2017</span></div><div class="em-row"><span class="em-k">Score</span><span class="em-v">68.00%</span></div></div><span class="edu-badge badge-b">UP Board Certified</span></div>
   </div>
 </section>
 
-<!-- SUMMER TRAINING -->
+<!-- TRAINING -->
 <section id="training" class="section">
-  <div class="rv">
-    <div class="sec-eyebrow">06 — Summer Training</div>
-    <h2 class="sec-heading">Hands-On<br><em>Learning</em></h2>
-  </div>
+  <div class="rv"><div class="sec-eyebrow">06 — Summer Training</div><h2 class="sec-heading">Hands-On<br><em>Learning</em></h2></div>
   <div class="train-grid rv">
-    <div class="train-card">
-      <div class="train-stripe ts-a"></div>
-      <div class="train-badge">☕ Java Technology</div>
-      <div class="train-title">Medical Store Management System</div>
-      <div class="train-inst">Analyze Infotech, Lucknow</div>
-      <div class="train-dur">July 2021 – September 2021</div>
-      <p class="train-desc">Developed a comprehensive Medical Store Management System handling purchases, sales, and inventory management. Built using Java Swing for a rich desktop UI experience.</p>
-      <div class="train-tech"><span class="tt">Java</span><span class="tt">Java Swing</span><span class="tt">Desktop App</span></div>
-    </div>
-    <div class="train-card">
-      <div class="train-stripe ts-b"></div>
-      <div class="train-badge">🥽 AR / VR Development</div>
-      <div class="train-title">AR Zoo Visual Application</div>
-      <div class="train-inst">TeckXR · Certified by IIT Roorkee</div>
-      <div class="train-dur">January 2023 – March 2023</div>
-      <p class="train-desc">Built an immersive AR Zoo Visualisation application to showcase zoo experiences on mobile and desktop using AR Cube interactive technology with 3D animal models.</p>
-      <div class="train-tech"><span class="tt">Unity</span><span class="tt">Vuforia</span><span class="tt">AR/VR</span><span class="tt">C#</span><span class="tt">3D Models</span></div>
-    </div>
+    <div class="train-card tilt-card"><div class="train-stripe ts-a"></div><div class="train-badge">☕ Java Technology</div><div class="train-title">Medical Store Management System</div><div class="train-inst">Analyze Infotech, Lucknow</div><div class="train-dur">July 2021 – September 2021</div><p class="train-desc">Developed a comprehensive Medical Store Management System handling purchases, sales, and inventory management using Java Swing.</p><div class="train-tech"><span class="tt">Java</span><span class="tt">Java Swing</span><span class="tt">Desktop App</span></div></div>
+    <div class="train-card tilt-card"><div class="train-stripe ts-b"></div><div class="train-badge">🥽 AR / VR Development</div><div class="train-title">AR Zoo Visual Application</div><div class="train-inst">TeckXR · Certified by IIT Roorkee</div><div class="train-dur">January 2023 – March 2023</div><p class="train-desc">Built an immersive AR Zoo Visualisation application to showcase zoo experiences on mobile and desktop using AR Cube interactive technology.</p><div class="train-tech"><span class="tt">Unity</span><span class="tt">Vuforia</span><span class="tt">AR/VR</span><span class="tt">C#</span><span class="tt">3D Models</span></div></div>
   </div>
 </section>
 
 <!-- ACHIEVEMENTS -->
 <section id="achievements" class="section">
-  <div class="rv">
-    <div class="sec-eyebrow">07 — Achievements</div>
-    <h2 class="sec-heading">Beyond<br><em>the Code</em></h2>
-  </div>
+  <div class="rv"><div class="sec-eyebrow">07 — Achievements</div><h2 class="sec-heading">Beyond<br><em>the Code</em></h2></div>
   <div class="ach-grid">
-    <div class="ach-card rv"><span class="ach-em">🏆</span><div class="ach-title">District-Level Speech Winner</div><div class="ach-desc">First position in Voter Awareness speech competition at district level, awarded by Chief Electoral Officer of UP with certificate.</div></div>
+    <div class="ach-card rv"><span class="ach-em">🏆</span><div class="ach-title">District-Level Speech Winner</div><div class="ach-desc">First position in Voter Awareness speech competition at district level, awarded by Chief Electoral Officer of UP.</div></div>
     <div class="ach-card rv d1"><span class="ach-em">🎖️</span><div class="ach-title">NSS Campus Ambassador</div><div class="ach-desc">Awarded by Chief Electoral Officer of UP as NSS Volunteer & Campus Ambassador for community service.</div></div>
     <div class="ach-card rv d2"><span class="ach-em">✍️</span><div class="ach-title">Literary Club Secretary</div><div class="ach-desc">Served as Secretary of the Literary Club at CSJMU Kanpur — organised debates, discussions, and cultural events.</div></div>
     <div class="ach-card rv"><span class="ach-em">🛡️</span><div class="ach-title">Ethical Hacking — Udemy</div><div class="ach-desc">Completed certified Ethical Hacking course online, expanding cybersecurity knowledge and practical skills.</div></div>
     <div class="ach-card rv d1"><span class="ach-em">🐍</span><div class="ach-title">Python with IoT Workshop</div><div class="ach-desc">Attended workshops on Python with IoT and Networking Marketing, enhancing cross-domain technical knowledge.</div></div>
     <div class="ach-card rv d2"><span class="ach-em">🏸</span><div class="ach-title">Sports & Debate Certificates</div><div class="ach-desc">Multiple certificates in badminton, chess, public speaking, and debate competitions across academic years.</div></div>
   </div>
-  <div class="rv" style="margin-top:4rem">
-    <div class="sec-eyebrow" style="margin-bottom:1.5rem">Interests &amp; Hobbies</div>
-  </div>
+  <div class="rv" style="margin-top:4rem"><div class="sec-eyebrow" style="margin-bottom:1.5rem">Interests & Hobbies</div></div>
   <div class="hobbies-wrap rv">
-    <div class="hobby-pill"><span>🎵</span><span>Instrumental Music</span></div>
-    <div class="hobby-pill"><span>📖</span><span>Biographies</span></div>
-    <div class="hobby-pill"><span>🏸</span><span>Badminton</span></div>
-    <div class="hobby-pill"><span>♟️</span><span>Chess</span></div>
-    <div class="hobby-pill"><span>📚</span><span>Ritual Books</span></div>
-    <div class="hobby-pill"><span>🎤</span><span>Public Speaking</span></div>
-    <div class="hobby-pill"><span>💬</span><span>Group Discussion</span></div>
-    <div class="hobby-pill"><span>🔭</span><span>Knowing New Things</span></div>
+    <div class="hobby-pill"><span>🎵</span><span>Instrumental Music</span></div><div class="hobby-pill"><span>📖</span><span>Biographies</span></div><div class="hobby-pill"><span>🏸</span><span>Badminton</span></div><div class="hobby-pill"><span>♟️</span><span>Chess</span></div><div class="hobby-pill"><span>📚</span><span>Ritual Books</span></div><div class="hobby-pill"><span>🎤</span><span>Public Speaking</span></div><div class="hobby-pill"><span>💬</span><span>Group Discussion</span></div><div class="hobby-pill"><span>🔭</span><span>Knowing New Things</span></div>
   </div>
 </section>
 
@@ -1017,98 +667,122 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
     <h2 class="contact-heading">Let's Work<br><em>Together</em></h2>
     <p class="contact-sub">I'm open to full-time roles, consulting, and exciting projects. Whether you need a .NET expert, a team lead, or a tech consultant — let's talk.</p>
     <div class="contact-links">
-      <a href="mailto:sachinmishra.nss@gmail.com" class="c-link">✉&ensp;sachinmishra.nss@gmail.com</a>
-      <a href="tel:8887930549" class="c-link">📞&ensp;8887930549 / 9621497631</a>
+      <a href="mailto:sachinmishra.nss@gmail.com" class="c-link">✉ sachinmishra.nss@gmail.com</a>
+      <a href="tel:8887930549" class="c-link">📞 8887930549 / 9621497631</a>
     </div>
     <div class="soc-row">
       <a href="https://www.linkedin.com/in/sachin-mishra-325754201" target="_blank" class="soc-btn">LinkedIn</a>
       <a href="mailto:sachinmishra.nss@gmail.com" class="soc-btn">Email Me</a>
-      <a href="#" class="soc-btn">Download CV ↓</a>
+      <button class="soc-btn cv-download" id="downloadCvBtn" onclick="generateCV()">Download CV ↓</button>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="foot">© 2026 <strong>Sachin Mishra</strong> · Chandigarh, India</div>
-  <div class="foot">Crafted with <strong>precision</strong> &amp; passion</div>
+  <div class="foot">Crafted with <strong>precision</strong> & passion</div>
 </footer>
 
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span class="t-icon"></span><span class="t-msg"></span></div>
+
 <script>
-// LOADER
+// ========== TOAST SYSTEM ==========
+function showToast(icon, msg, dur=3000){
+  const t=document.getElementById('toast');
+  t.querySelector('.t-icon').textContent=icon;
+  t.querySelector('.t-msg').textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),dur);
+}
+
+// ========== LOADER ==========
 window.addEventListener('load',()=>{
   setTimeout(()=>{
     const l=document.getElementById('loader');
     l.classList.add('done');
-    setTimeout(()=>{l.style.display='none'},900);
+    setTimeout(()=>{l.style.display='none';initHeroCountUp();},900);
   },2200);
 });
 
-// CURSOR (only on devices with fine pointer)
-const hasFinePointer=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
-if(hasFinePointer){
-  const dot=document.getElementById('cur-dot');
-  const ring=document.getElementById('cur-ring');
-  const glow=document.getElementById('cur-glow');
+// ========== LIVE DATE ==========
+function updateDate(){
+  const d=new Date();
+  const opts={day:'numeric',month:'long',year:'numeric'};
+  document.getElementById('liveDate').textContent=d.toLocaleDateString('en-GB',opts);
+}
+updateDate();setInterval(updateDate,60000);
+
+// ========== TYPING EFFECT ==========
+const roles=['Software Engineer & Consultant','.NET Core Developer','Microservices Architect','Full Stack Developer','Blockchain Enthusiast','AR/VR Explorer'];
+let ri=0,ci=0,deleting=false;
+function typeEffect(){
+  const el=document.getElementById('heroTitle');
+  if(!el)return;
+  const cur=roles[ri];
+  if(!deleting){
+    ci++;
+    el.innerHTML=`<span class="typed-text">${cur.substring(0,ci)}</span><span class="cursor-blink"></span>`;
+    if(ci===cur.length){deleting=true;setTimeout(typeEffect,2200);return;}
+    setTimeout(typeEffect,80+Math.random()*40);
+  }else{
+    ci--;
+    el.innerHTML=`<span class="typed-text">${cur.substring(0,ci)}</span><span class="cursor-blink"></span>`;
+    if(ci===0){deleting=false;ri=(ri+1)%roles.length;setTimeout(typeEffect,500);return;}
+    setTimeout(typeEffect,35);
+  }
+}
+setTimeout(typeEffect,2800);
+
+// ========== HERO COUNT-UP ==========
+function initHeroCountUp(){
+  document.querySelectorAll('.mc-v[data-count]').forEach(el=>{
+    const target=+el.dataset.count;
+    const suf=target===82?'%':'+';
+    let s=null;
+    (function step(ts){
+      if(!s)s=ts;
+      const p=Math.min((ts-s)/1200,1);
+      const eased=1-Math.pow(1-p,3);
+      el.textContent=Math.floor(eased*target)+suf;
+      if(p<1)requestAnimationFrame(step);
+    })(performance.now());
+  });
+}
+
+// ========== SCROLL PROGRESS ==========
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  const pct=h>0?(scrollY/h)*100:0;
+  document.getElementById('scrollProgress').style.width=pct+'%';
+  document.getElementById('nav').classList.toggle('scrolled',scrollY>50);
+  document.getElementById('backTop').classList.toggle('show',scrollY>600);
+},{passive:true});
+
+// ========== CURSOR ==========
+const hasFP=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+if(hasFP){
+  const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring'),glow=document.getElementById('cur-glow');
   const trails=[...document.querySelectorAll('.trail-dot')];
   let mx=0,my=0,rx=0,ry=0,gx=0,gy=0;
   const hist=Array(trails.length).fill(0).map(()=>({x:0,y:0}));
   let fi=0;
-
-  document.addEventListener('mousemove',e=>{
-    mx=e.clientX;my=e.clientY;
-    dot.style.left=mx+'px';dot.style.top=my+'px';
-    hist[fi]={x:mx,y:my};
-    fi=(fi+1)%hist.length;
-  });
-
-  (function loopRing(){
-    rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
-    ring.style.left=rx+'px';ring.style.top=ry+'px';
-    gx+=(mx-gx)*.06;gy+=(my-gy)*.06;
-    glow.style.left=gx+'px';glow.style.top=gy+'px';
-    requestAnimationFrame(loopRing);
-  })();
-
-  (function loopTrail(){
-    trails.forEach((t,i)=>{
-      const delay=i*3;
-      const idx=(fi-delay-1+hist.length)%hist.length;
-      const p=hist[idx]||{x:0,y:0};
-      t.style.left=p.x+'px';t.style.top=p.y+'px';
-      t.style.opacity=((trails.length-i)/(trails.length*1.8)).toFixed(2);
-      t.style.transform=`translate(-50%,-50%) scale(${1-(i/(trails.length*1.5))})`;
-    });
-    requestAnimationFrame(loopTrail);
-  })();
-
-  const hoverEls='a,button,.exp-tab,.edu-card,.train-card,.proj-card,.ach-card,.stat-box,.mini-card,.hero-card,.tag,.btn-primary,.btn-ghost,.soc-btn,.soft-tag,.ep-tag,.nav-cta,.hobby-pill,.proj-link';
-  document.querySelectorAll(hoverEls).forEach(el=>{
-    el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));
-    el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
-  });
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';hist[fi]={x:mx,y:my};fi=(fi+1)%hist.length;});
+  (function loopR(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';gx+=(mx-gx)*.06;gy+=(my-gy)*.06;glow.style.left=gx+'px';glow.style.top=gy+'px';requestAnimationFrame(loopR)})();
+  (function loopT(){trails.forEach((t,i)=>{const d=i*3,idx=(fi-d-1+hist.length)%hist.length,p=hist[idx]||{x:0,y:0};t.style.left=p.x+'px';t.style.top=p.y+'px';t.style.opacity=((trails.length-i)/(trails.length*1.8)).toFixed(2);t.style.transform=`translate(-50%,-50%) scale(${1-(i/(trails.length*1.5))})`});requestAnimationFrame(loopT)})();
+  const hSel='a,button,.exp-tab,.edu-card,.train-card,.proj-card,.ach-card,.stat-box,.mini-card,.hero-card,.tag,.btn-primary,.btn-ghost,.soc-btn,.soft-tag,.ep-tag,.nav-cta,.hobby-pill,.proj-link,.ep-link';
+  document.querySelectorAll(hSel).forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'))});
 }
 
-// NAV SCROLL
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50),{passive:true});
+// ========== HAMBURGER ==========
+const hamburger=document.getElementById('hamburger'),mobileNav=document.getElementById('mobileNav');
+hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});
+mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('open');mobileNav.classList.remove('open');document.body.style.overflow=''}));
 
-// HAMBURGER MENU
-const hamburger=document.getElementById('hamburger');
-const mobileNav=document.getElementById('mobileNav');
-hamburger.addEventListener('click',()=>{
-  hamburger.classList.toggle('open');
-  mobileNav.classList.toggle('open');
-  document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':'';
-});
-mobileNav.querySelectorAll('a').forEach(a=>{
-  a.addEventListener('click',()=>{
-    hamburger.classList.remove('open');
-    mobileNav.classList.remove('open');
-    document.body.style.overflow='';
-  });
-});
-
-// TABS
+// ========== TABS ==========
 document.querySelectorAll('.exp-tab').forEach(tab=>{
   tab.addEventListener('click',()=>{
     document.querySelectorAll('.exp-tab').forEach(t=>t.classList.remove('active'));
@@ -1118,64 +792,243 @@ document.querySelectorAll('.exp-tab').forEach(tab=>{
   });
 });
 
-// REVEAL
-const ro=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});
-},{threshold:.1});
+// ========== REVEAL ==========
+const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show')})},{threshold:.1});
 document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>ro.observe(el));
 
-// SKILL BARS
-const skObs=new IntersectionObserver(e=>{
-  if(e[0].isIntersecting){
-    document.querySelectorAll('.skill-bar').forEach((b,i)=>{
-      setTimeout(()=>b.classList.add('go'),100+i*45);
-    });
-    skObs.disconnect();
-  }
-},{threshold:.1});
-const skillSec=document.querySelector('#skills');
-if(skillSec)skObs.observe(skillSec);
+// ========== SKILL BARS ==========
+const skObs=new IntersectionObserver(e=>{if(e[0].isIntersecting){document.querySelectorAll('.skill-bar').forEach((b,i)=>setTimeout(()=>b.classList.add('go'),100+i*45));skObs.disconnect()}},{threshold:.1});
+const ss=document.querySelector('#skills');if(ss)skObs.observe(ss);
 
-// MARQUEE CLONE
-const mq=document.getElementById('mqtrack');
-if(mq){const c=mq.cloneNode(true);c.setAttribute('aria-hidden','true');mq.parentNode.appendChild(c);}
+// ========== MARQUEE ==========
+const mq=document.getElementById('mqtrack');if(mq){const c=mq.cloneNode(true);c.setAttribute('aria-hidden','true');mq.parentNode.appendChild(c)}
 
-// ACTIVE NAV HIGHLIGHT
+// ========== NAV HIGHLIGHT ==========
 document.querySelectorAll('section[id]').forEach(s=>{
-  new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        document.querySelectorAll('.nav-links a').forEach(a=>{
-          a.style.color='';
-          if(a.getAttribute('href')==='#'+e.target.id)a.style.color='var(--cr)';
-        });
-      }
-    });
-  },{threshold:.25}).observe(s);
+  new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){document.querySelectorAll('.nav-links a').forEach(a=>{a.style.color='';if(a.getAttribute('href')==='#'+x.target.id)a.style.color='var(--cr)'})}})},{threshold:.25}).observe(s);
 });
 
-// COUNT UP
+// ========== COUNT UP STATS ==========
+document.querySelectorAll('.stat-box').forEach(sb=>{
+  new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){const n=x.target.querySelector('.sbn');if(n&&!n.dataset.done){n.dataset.done='1';countUp(n,n.textContent)}}})},{threshold:.5}).observe(sb);
+});
 function countUp(el,target,dur=1100){
   const n=parseFloat(target),suf=target.replace(/[\d.]/g,'');
   let s=null;
-  (function step(ts){
-    if(!s)s=ts;
-    const p=Math.min((ts-s)/dur,1);
-    el.textContent=Math.floor(p*n)+suf;
-    if(p<1)requestAnimationFrame(step);
-    else el.textContent=target;
-  })(performance.now());
+  (function step(ts){if(!s)s=ts;const p=Math.min((ts-s)/dur,1);el.textContent=Math.floor(p*n)+suf;if(p<1)requestAnimationFrame(step);else el.textContent=target})(performance.now());
 }
-document.querySelectorAll('.stat-box').forEach(sb=>{
-  new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        const n=e.target.querySelector('.sbn');
-        if(n&&!n.dataset.done){n.dataset.done='1';countUp(n,n.textContent);}
-      }
+
+// ========== 3D TILT EFFECT ==========
+if(hasFP){
+  document.querySelectorAll('.tilt-card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5;
+      const y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(800px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-6px)`;
     });
-  },{threshold:.5}).observe(sb);
+    card.addEventListener('mouseleave',()=>{card.style.transform=''});
+  });
+}
+
+// ========== CLICK PARTICLES ==========
+document.addEventListener('click',e=>{
+  for(let i=0;i<6;i++){
+    const p=document.createElement('div');
+    p.className='particle';
+    const sz=Math.random()*6+3;
+    p.style.cssText=`width:${sz}px;height:${sz}px;left:${e.clientX}px;top:${e.clientY}px;background:${['#e74c3c','#ff6b6b','#ff8a80','#c0392b','#10b981'][Math.floor(Math.random()*5)]};`;
+    document.body.appendChild(p);
+    const angle=Math.random()*Math.PI*2;
+    const dist=Math.random()*60+30;
+    const dx=Math.cos(angle)*dist;
+    const dy=Math.sin(angle)*dist;
+    p.animate([
+      {opacity:1,transform:`translate(-50%,-50%) translate(0,0) scale(1)`},
+      {opacity:0,transform:`translate(-50%,-50%) translate(${dx}px,${dy}px) scale(0)`}
+    ],{duration:600+Math.random()*300,easing:'cubic-bezier(.25,.46,.45,.94)'});
+    setTimeout(()=>p.remove(),900);
+  }
 });
+
+// ========== CV DOWNLOAD — jsPDF ==========
+function generateCV(){
+  const btn=document.getElementById('downloadCvBtn');
+  const heroBtn=document.getElementById('downloadCvHero');
+  if(btn)btn.classList.add('downloading');
+  showToast('📄','Generating your CV...');
+
+  // Load jsPDF dynamically
+  if(!window.jspdf){
+    const s=document.createElement('script');
+    s.src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+    s.onload=()=>buildPDF(btn);
+    s.onerror=()=>{showToast('❌','Failed to load PDF library');if(btn)btn.classList.remove('downloading')};
+    document.head.appendChild(s);
+  }else{
+    buildPDF(btn);
+  }
+}
+
+function buildPDF(btn){
+  const{jsPDF}=window.jspdf;
+  const doc=new jsPDF({unit:'mm',format:'a4'});
+  const W=210,M=18;
+  let y=20;
+  const lw=W-M*2;
+
+  // Colors
+  const red=[192,57,43];
+  const dark=[28,16,16];
+  const gray=[122,104,104];
+  const green=[16,185,129];
+
+  // Helper
+  function addLine(clr){doc.setDrawColor(...clr);doc.setLineWidth(.3);doc.line(M,y,W-M,y);y+=4;}
+  function checkPage(){if(y>270){doc.addPage();y=20;}}
+
+  // HEADER
+  doc.setFont('helvetica','bold');
+  doc.setFontSize(28);
+  doc.setTextColor(...red);
+  doc.text('SACHIN MISHRA',M,y);
+  y+=8;
+  doc.setFontSize(11);
+  doc.setTextColor(...dark);
+  doc.text('Software Engineer & Consultant',M,y);
+  y+=6;
+
+  // Contact bar
+  doc.setFontSize(8);
+  doc.setTextColor(...gray);
+  doc.text('sachinmishra.nss@gmail.com  |  8887930549 / 9621497631  |  Chandigarh, India  |  linkedin.com/in/sachin-mishra-325754201',M,y);
+  y+=3;
+
+  // Status badge
+  doc.setFillColor(...green);
+  doc.roundedRect(M,y,38,5,2,2,'F');
+  doc.setFontSize(7);doc.setTextColor(255,255,255);
+  doc.text('OPEN TO WORK',M+4,y+3.5);
+  y+=10;
+  addLine(red);
+
+  // SUMMARY
+  doc.setFont('helvetica','bold');doc.setFontSize(12);doc.setTextColor(...red);
+  doc.text('PROFESSIONAL SUMMARY',M,y);y+=6;
+  doc.setFont('helvetica','normal');doc.setFontSize(9);doc.setTextColor(...dark);
+  const sum='Motivated & results-driven .NET Developer with 2+ years of experience in ASP.NET Core, C#, Kafka, Angular, and Microservices. Currently building healthcare RCM platforms at Axtrics Solutions serving the USA. MCA Topper (82.61%) with expertise in clean architecture, SOLID principles, Docker, Azure, and emerging tech including AR/VR & Blockchain.';
+  const sumLines=doc.splitTextToSize(sum,lw);
+  doc.text(sumLines,M,y);y+=sumLines.length*4.5+4;
+  addLine(red);
+
+  // SKILLS
+  doc.setFont('helvetica','bold');doc.setFontSize(12);doc.setTextColor(...red);
+  doc.text('TECHNICAL SKILLS',M,y);y+=6;
+  doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(...dark);
+  const skills=[
+    ['Backend','ASP.NET Core, C#, Web API, Kafka, Microservices, EF Core, ADO.NET, Dapper, Windows Services'],
+    ['Frontend','Angular, React.js, HTML/CSS/JavaScript, Razor Pages'],
+    ['Database','MS SQL Server, Stored Procedures'],
+    ['DevOps/Cloud','Docker, Azure Cloud, Multitenant Architecture, Clean Architecture'],
+    ['Emerging','NEAR Blockchain, Web3, Smart Contracts, Unity, Vuforia, AR/VR'],
+    ['Soft Skills','Communication, Public Speaking, Leadership, Problem Solving, Team Collaboration']
+  ];
+  skills.forEach(([k,v])=>{
+    doc.setFont('helvetica','bold');doc.text(k+': ',M,y);
+    const kw=doc.getTextWidth(k+': ');
+    doc.setFont('helvetica','normal');
+    const vLines=doc.splitTextToSize(v,lw-kw);
+    doc.text(vLines,M+kw,y);
+    y+=vLines.length*4+2;checkPage();
+  });
+  y+=2;addLine(red);
+
+  // EXPERIENCE
+  doc.setFont('helvetica','bold');doc.setFontSize(12);doc.setTextColor(...red);
+  doc.text('WORK EXPERIENCE',M,y);y+=6;
+
+  const exps=[
+    {role:'Dot Net Developer',co:'Axtrics Solutions Pvt. Ltd., Mohali',dur:'Oct 2024 – Present',items:[
+      'Developed backend Web APIs using .NET Core, C# and ASP.NET for Catalyst RCM healthcare platform',
+      'Implemented Kafka for asynchronous service communication and event streaming pipelines',
+      'Built multitenant architecture supporting multiple US healthcare clients simultaneously',
+      'Containerized services with Docker and deployed on Azure cloud infrastructure',
+      'Developed Angular-based Admin Management System with JWT auth and role-based authorization'
+    ]},
+    {role:'Software Engineer',co:'UTC Digital Technologies Pvt. Ltd., Indore',dur:'Jun 2024 – Sep 2024',items:[
+      'Developed backend modules using .NET Core and MVC for Digi2L appliance trade-in platform',
+      'Built REST APIs for product listing, user management and price evaluation logic',
+      'Optimised SQL stored procedures and worked with Razor Pages and Entity Framework'
+    ]},
+    {role:'Software Engineer',co:'MCN Solutions Pvt. Ltd., Noida',dur:'Aug 2023 – Apr 2024',items:[
+      'Contributed to feature development on C-SharpCorner.com serving 10M+ monthly readers',
+      'Built ASP.NET Core modules for content management and user features',
+      'Collaborated in an Agile team delivering bi-weekly feature releases'
+    ]},
+    {role:'Software Trainee',co:'MCN Solutions Pvt. Ltd., Noida',dur:'Mar 2023 – Aug 2023',items:[
+      'Learned ASP.NET Core and MVC patterns under senior developer mentorship',
+      'Built features and bug fixes for the C-SharpCorner platform'
+    ]}
+  ];
+
+  exps.forEach(exp=>{
+    checkPage();
+    doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(...dark);
+    doc.text(exp.role,M,y);y+=4;
+    doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(...gray);
+    doc.text(exp.co+'  |  '+exp.dur,M,y);y+=5;
+    doc.setFontSize(8.5);doc.setTextColor(...dark);
+    exp.items.forEach(item=>{
+      checkPage();
+      const lines=doc.splitTextToSize('• '+item,lw-4);
+      doc.text(lines,M+2,y);y+=lines.length*3.8+1;
+    });
+    y+=3;
+  });
+
+  addLine(red);
+
+  // EDUCATION
+  checkPage();
+  doc.setFont('helvetica','bold');doc.setFontSize(12);doc.setTextColor(...red);
+  doc.text('EDUCATION',M,y);y+=6;
+  const edus=[
+    {deg:'Master of Computer Application (MCA)',uni:'CSJMU (UIET) Kanpur',yr:'2023',score:'82.61% — 3rd University Topper'},
+    {deg:'Bachelor of Computer Application (BCA)',uni:'CSJM University',yr:'2021',score:'67.19%'},
+    {deg:'Intermediate Examination',uni:'UP Board',yr:'2017',score:'68.00%'}
+  ];
+  edus.forEach(e=>{
+    checkPage();
+    doc.setFont('helvetica','bold');doc.setFontSize(9.5);doc.setTextColor(...dark);
+    doc.text(e.deg,M,y);y+=4;
+    doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(...gray);
+    doc.text(e.uni+'  |  '+e.yr+'  |  '+e.score,M,y);y+=5;
+  });
+  y+=2;addLine(red);
+
+  // ACHIEVEMENTS
+  checkPage();
+  doc.setFont('helvetica','bold');doc.setFontSize(12);doc.setTextColor(...red);
+  doc.text('ACHIEVEMENTS',M,y);y+=6;
+  doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(...dark);
+  const achs=[
+    'District-Level Speech Winner — First position in Voter Awareness speech competition',
+    'NSS Campus Ambassador — Awarded by Chief Electoral Officer of UP',
+    'Literary Club Secretary at CSJMU Kanpur',
+    'Certified Ethical Hacking — Udemy',
+    'Python with IoT Workshop & Networking Marketing'
+  ];
+  achs.forEach(a=>{checkPage();doc.text('• '+a,M,y);y+=4.5});
+
+  // Footer
+  doc.setFontSize(7);doc.setTextColor(...gray);
+  doc.text('Generated from sachinmishra.dev — '+new Date().toLocaleDateString('en-GB'),M,285);
+
+  // Save
+  doc.save('Sachin_Mishra_CV.pdf');
+  if(btn)btn.classList.remove('downloading');
+  showToast('✅','CV downloaded successfully!');
+}
 </script>
 </body>
 </html>
