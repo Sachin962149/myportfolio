@@ -3,7 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sachin Mishra — Software Engineer</title>
+<title>Sachin Mishra — Full Stack .NET Developer & Software Engineer</title>
+<meta name="description" content="Sachin Mishra — Full Stack .NET Developer & Consultant. Expert in ASP.NET Core, C#, Kafka, Angular, Microservices, Docker, Azure. MCA 3rd University Topper. Open to opportunities.">
+<meta name="keywords" content="Sachin Mishra, .NET Developer, ASP.NET Core, C# Developer, Full Stack Developer, Microservices, Kafka, Angular, Azure, Docker, Software Engineer India, Chandigarh Developer">
+<meta name="author" content="Sachin Mishra">
+<meta property="og:title" content="Sachin Mishra — Full Stack .NET Developer">
+<meta property="og:description" content="Software Engineer building healthcare & enterprise platforms with .NET, Kafka, Angular & Azure. Open to work.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sachin Mishra — .NET Developer & Consultant">
+<meta name="twitter:description" content="Full Stack .NET Developer with 2+ years experience. Open to opportunities.">
+<link rel="canonical" href="https://github.com/Sachin88879">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Outfit:wght@200;300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -60,31 +70,80 @@ body{background:var(--snow);color:var(--ink);font-family:var(--sans);overflow-x:
 @keyframes loadFill{to{width:100%}}
 @keyframes riseUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:1.8rem var(--section-px);background:transparent;border-bottom:1px solid transparent;transition:all .5s var(--ease)}
-nav.scrolled{padding:1rem var(--section-px);background:rgba(253,250,249,.88);backdrop-filter:blur(24px);border-bottom-color:var(--border);box-shadow:0 2px 40px rgba(192,57,43,.06)}
-.logo{font-family:var(--serif);font-size:1.35rem;font-weight:700;font-style:italic;background:linear-gradient(135deg,var(--cr),var(--ruby));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;letter-spacing:.03em;display:flex;align-items:center;gap:10px;flex-shrink:0}
-.logo-icon{width:22px;height:22px;flex-shrink:0;transition:transform .4s var(--spring)}
-.logo:hover .logo-icon{transform:rotate(15deg) scale(1.1)}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{font-family:var(--mono);font-size:.56rem;color:var(--muted);text-decoration:none;letter-spacing:.18em;text-transform:uppercase;transition:color .3s;position:relative;padding-bottom:4px}
-.nav-links a::after{content:'';position:absolute;bottom:0;left:50%;right:50%;height:1px;background:linear-gradient(90deg,var(--cr),var(--rose));transition:left .3s var(--ease),right .3s var(--ease)}
-.nav-links a:hover{color:var(--cr)}
-.nav-links a:hover::after{left:0;right:0}
-.nav-cta{font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;padding:.65rem 1.8rem;background:linear-gradient(135deg,var(--cr),var(--ruby));color:#fff;text-decoration:none;border-radius:99px;transition:all .35s var(--spring);box-shadow:0 4px 20px rgba(192,57,43,.25);flex-shrink:0}
-.nav-cta:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(192,57,43,.35)}
+/* ===================== NAV — PREMIUM REDESIGN ===================== */
+/* Top accent bar */
+nav::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 0%,var(--cr) 20%,var(--ruby) 50%,var(--rose) 80%,transparent 100%);opacity:0;transition:opacity .5s var(--ease);z-index:1}
+nav.scrolled::before{opacity:1}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;justify-content:space-between;align-items:center;padding:1.6rem var(--section-px);background:transparent;border-bottom:1px solid transparent;transition:all .5s var(--ease)}
+nav.scrolled{padding:.85rem var(--section-px);background:rgba(253,250,249,.92);backdrop-filter:blur(32px) saturate(180%);border-bottom-color:rgba(192,57,43,.1);box-shadow:0 4px 60px rgba(192,57,43,.08),0 1px 0 rgba(255,255,255,.8) inset}
+
+/* LOGO — signature monogram + wordmark */
+.logo{text-decoration:none;display:flex;align-items:center;gap:12px;flex-shrink:0;position:relative}
+.logo-monogram{width:38px;height:38px;flex-shrink:0;border-radius:10px;background:linear-gradient(135deg,var(--cr) 0%,var(--ruby) 50%,var(--rose) 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(192,57,43,.35);transition:all .4s var(--spring);position:relative;overflow:hidden}
+.logo-monogram::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent 60%);border-radius:inherit}
+.logo-monogram span{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:#fff;font-style:italic;position:relative;z-index:1;letter-spacing:-.03em}
+.logo:hover .logo-monogram{transform:rotate(-6deg) scale(1.08);box-shadow:0 8px 28px rgba(192,57,43,.45)}
+.logo-text-wrap{display:flex;flex-direction:column;gap:1px}
+.logo-name{font-family:var(--serif);font-size:1.1rem;font-weight:700;font-style:italic;background:linear-gradient(135deg,var(--ink),var(--ink2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.01em;line-height:1}
+.logo-title{font-family:var(--mono);font-size:.42rem;color:var(--stone);letter-spacing:.22em;text-transform:uppercase;line-height:1}
+
+/* NAV PILL CONTAINER */
+.nav-pill-wrap{display:flex;align-items:center;background:rgba(255,255,255,.65);border:1px solid rgba(192,57,43,.1);border-radius:99px;padding:.3rem .4rem;gap:.1rem;backdrop-filter:blur(8px);box-shadow:0 2px 20px rgba(192,57,43,.06);transition:all .4s var(--ease)}
+nav.scrolled .nav-pill-wrap{background:rgba(255,248,246,.8);border-color:rgba(192,57,43,.15);box-shadow:0 4px 24px rgba(192,57,43,.09)}
+.nav-links{display:flex;gap:.1rem;list-style:none;align-items:center}
+.nav-links li a{font-family:var(--mono);font-size:.5rem;color:var(--stone);text-decoration:none;letter-spacing:.14em;text-transform:uppercase;padding:.45rem .85rem;border-radius:99px;transition:all .3s var(--ease);white-space:nowrap;position:relative}
+.nav-links li a:hover{color:var(--cr);background:rgba(192,57,43,.07)}
+.nav-links li a.active-nav{color:var(--cr);background:rgba(192,57,43,.08);font-weight:500}
+
+/* Nav pill divider dots */
+.nav-divider{width:3px;height:3px;border-radius:50%;background:rgba(192,57,43,.2);margin:0 .15rem;flex-shrink:0}
+
+/* CTA GROUP */
+.nav-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+
+/* Status badge in nav */
+.nav-status{display:inline-flex;align-items:center;gap:6px;padding:.38rem 1rem;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:99px;font-family:var(--mono);font-size:.45rem;color:var(--green-dark);letter-spacing:.14em;text-transform:uppercase;transition:all .3s;white-space:nowrap}
+.nav-status:hover{background:rgba(16,185,129,.13);border-color:rgba(16,185,129,.35);transform:translateY(-1px)}
+.ns-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:greenPulse 2s ease-in-out infinite;box-shadow:0 0 6px var(--green-glow)}
+
+.nav-cta{font-family:var(--mono);font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;padding:.55rem 1.5rem;background:linear-gradient(135deg,var(--cr),var(--ruby));color:#fff;text-decoration:none;border-radius:99px;transition:all .35s var(--spring);box-shadow:0 4px 18px rgba(192,57,43,.3);flex-shrink:0;position:relative;overflow:hidden;border:none;cursor:pointer}
+.nav-cta::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--ruby),var(--rose));opacity:0;transition:opacity .3s}
+.nav-cta span{position:relative;z-index:1}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(192,57,43,.4)}
+.nav-cta:hover::before{opacity:1}
 
 /* HAMBURGER */
-.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:8px;cursor:pointer;z-index:600}
-.hamburger span{display:block;width:24px;height:2px;background:var(--ink);border-radius:2px;transition:all .3s var(--ease)}
-.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);background:var(--ruby)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);background:var(--ruby)}
-.mobile-nav{display:none;position:fixed;inset:0;z-index:550;background:rgba(253,252,251,.97);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity .4s var(--ease)}
-.mobile-nav.open{opacity:1;pointer-events:auto}
-.mobile-nav a{font-family:var(--serif);font-size:1.8rem;font-weight:600;font-style:italic;color:var(--ink);text-decoration:none;transition:color .2s;letter-spacing:.02em}
-.mobile-nav a:hover{color:var(--ruby)}
-.mobile-nav .nav-cta{font-family:var(--mono);font-size:.7rem;margin-top:1rem}
+.hamburger{display:none;flex-direction:column;gap:5px;background:rgba(255,255,255,.7);border:1px solid rgba(192,57,43,.12);padding:9px 10px;cursor:pointer;z-index:600;border-radius:10px;backdrop-filter:blur(8px);transition:all .3s var(--ease)}
+.hamburger:hover{background:rgba(255,240,238,.9);border-color:rgba(192,57,43,.25)}
+.hamburger span{display:block;width:20px;height:1.5px;background:var(--ink2);border-radius:2px;transition:all .3s var(--ease)}
+.hamburger.open{background:rgba(255,107,107,.1);border-color:rgba(231,76,60,.3)}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px);background:var(--ruby)}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px);background:var(--ruby)}
+
+/* MOBILE NAV — full-screen elegant overlay */
+.mobile-nav{display:none;position:fixed;inset:0;z-index:550;background:linear-gradient(160deg,rgba(253,252,251,.98) 0%,rgba(255,240,238,.97) 100%);backdrop-filter:blur(30px);flex-direction:column;align-items:center;justify-content:center;gap:0;opacity:0;pointer-events:none;transition:opacity .4s var(--ease),visibility .4s;visibility:hidden}
+.mobile-nav.open{opacity:1;pointer-events:auto;visibility:visible}
+.mobile-nav-inner{display:flex;flex-direction:column;align-items:center;gap:0;width:100%;max-width:320px}
+.mobile-nav-item{width:100%;text-align:center;border-bottom:1px solid rgba(192,57,43,.07);opacity:0;transform:translateY(20px);transition:opacity .4s var(--smooth),transform .4s var(--smooth)}
+.mobile-nav.open .mobile-nav-item{opacity:1;transform:translateY(0)}
+.mobile-nav.open .mobile-nav-item:nth-child(1){transition-delay:.06s}
+.mobile-nav.open .mobile-nav-item:nth-child(2){transition-delay:.1s}
+.mobile-nav.open .mobile-nav-item:nth-child(3){transition-delay:.14s}
+.mobile-nav.open .mobile-nav-item:nth-child(4){transition-delay:.18s}
+.mobile-nav.open .mobile-nav-item:nth-child(5){transition-delay:.22s}
+.mobile-nav.open .mobile-nav-item:nth-child(6){transition-delay:.26s}
+.mobile-nav.open .mobile-nav-item:nth-child(7){transition-delay:.3s}
+.mobile-nav-item a{display:block;font-family:var(--serif);font-size:1.6rem;font-weight:600;font-style:italic;color:var(--ink);text-decoration:none;padding:1rem 0;transition:color .2s,padding .2s var(--spring);letter-spacing:.01em}
+.mobile-nav-item a:hover{color:var(--ruby);padding-left:12px}
+.mobile-nav-cta-wrap{margin-top:2rem;display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;transform:translateY(20px);transition:opacity .4s .34s var(--smooth),transform .4s .34s var(--smooth)}
+.mobile-nav.open .mobile-nav-cta-wrap{opacity:1;transform:translateY(0)}
+.mobile-nav-cta-wrap .nav-cta{font-size:.6rem;padding:.7rem 2.2rem;display:inline-block}
+.mobile-nav-sub{font-family:var(--mono);font-size:.5rem;color:var(--stone);letter-spacing:.14em;text-transform:uppercase}
+/* Mobile nav top logo area */
+.mobile-nav-logo{font-family:var(--serif);font-size:1.1rem;font-weight:700;font-style:italic;color:var(--cr);margin-bottom:2rem;letter-spacing:.02em;opacity:0;transform:translateY(-10px);transition:opacity .3s .02s var(--smooth),transform .3s .02s var(--smooth)}
+.mobile-nav.open .mobile-nav-logo{opacity:1;transform:translateY(0)}
 
 section,footer{position:relative;z-index:10}
 
@@ -173,6 +232,85 @@ section,footer{position:relative;z-index:10}
 
 /* GREEN LIVE BADGE */
 .live-badge{display:inline-flex;align-items:center;gap:6px;color:var(--green-dark);font-size:.8rem;font-weight:500;padding:.2rem .7rem;background:rgba(16,185,129,.08);border-radius:99px;border:1px solid rgba(16,185,129,.2)}
+
+/* PHOTO CARD */
+.photo-bio-card{background:rgba(255,255,255,.85);border:1px solid rgba(231,76,60,.15);border-radius:24px;padding:2.2rem 2rem 1.8rem;backdrop-filter:blur(16px);box-shadow:0 12px 50px rgba(192,57,43,.08);text-align:center;margin-bottom:1.6rem;position:relative;overflow:hidden;transition:transform .4s var(--spring),box-shadow .4s}
+.photo-bio-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cr),var(--ruby),var(--rose),var(--coral))}
+.photo-bio-card:hover{transform:translateY(-6px);box-shadow:0 24px 70px rgba(192,57,43,.13)}
+.photo-avatar{width:110px;height:110px;border-radius:50%;margin:0 auto 1.2rem;background:linear-gradient(135deg,#c0392b 0%,#e74c3c 40%,#ff6b6b 70%,#ff8a80 100%);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:2.8rem;font-weight:700;color:#fff;font-style:italic;border:4px solid rgba(255,255,255,.9);box-shadow:0 8px 30px rgba(192,57,43,.3),0 0 0 6px rgba(231,76,60,.08);position:relative;overflow:hidden;letter-spacing:-.02em}
+.photo-avatar svg{width:100%;height:100%;position:absolute;inset:0}
+.photo-name-card{font-family:var(--serif);font-size:1.25rem;font-weight:700;font-style:italic;color:var(--ink);margin-bottom:.2rem}
+.photo-role-card{font-family:var(--mono);font-size:.56rem;color:var(--ruby);letter-spacing:.18em;text-transform:uppercase;margin-bottom:1rem}
+.photo-bio-text{font-size:.79rem;color:var(--muted);line-height:1.75;font-weight:300;margin-bottom:1.2rem;text-align:left}
+.photo-social-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.psoc-btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;padding:.42rem 1rem;border:1px solid rgba(231,76,60,.2);border-radius:99px;color:var(--muted);text-decoration:none;transition:all .3s var(--spring);background:transparent;white-space:nowrap}
+.psoc-btn:hover{background:linear-gradient(135deg,var(--cr),var(--ruby));color:#fff;border-color:transparent;transform:translateY(-2px);box-shadow:0 6px 20px rgba(192,57,43,.2)}
+.psoc-btn svg{width:12px;height:12px;flex-shrink:0}
+.psoc-btn.gh:hover{background:linear-gradient(135deg,#1a1a2e,#24292f)}
+.psoc-btn.li:hover{background:linear-gradient(135deg,#0077b5,#005885)}
+.psoc-btn.cs:hover{background:linear-gradient(135deg,#c0392b,#e74c3c)}
+.psoc-btn.ig:hover{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)}
+
+/* SOCIAL PROFILES SECTION */
+.profiles-section{margin-top:3rem;padding:2rem;background:rgba(255,255,255,.7);border:1px solid rgba(231,76,60,.1);border-radius:20px;backdrop-filter:blur(10px)}
+.profiles-title{font-family:var(--mono);font-size:.56rem;color:var(--ruby);letter-spacing:.22em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:10px}
+.profiles-title::before{content:'';width:24px;height:1px;background:linear-gradient(90deg,var(--cr),var(--rose))}
+.profile-cards-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.pcard{background:rgba(255,255,255,.8);border:1px solid rgba(231,76,60,.1);border-radius:16px;padding:1.4rem 1.2rem;text-align:center;transition:all .35s var(--spring);text-decoration:none;position:relative;overflow:hidden}
+.pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;border-radius:16px 16px 0 0;transition:height .3s}
+.pcard.pcard-gh::before{background:linear-gradient(90deg,#1a1a2e,#636e72)}
+.pcard.pcard-li::before{background:linear-gradient(90deg,#0077b5,#00a0dc)}
+.pcard.pcard-cs::before{background:linear-gradient(90deg,var(--cr),var(--rose))}
+.pcard.pcard-ig::before{background:linear-gradient(90deg,#833ab4,#fd1d1d,#fcb045)}
+.pcard-ig .pcard-icon{background:linear-gradient(135deg,rgba(131,58,180,.1),rgba(253,29,29,.06))}
+.pcard:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(192,57,43,.1);border-color:rgba(231,76,60,.25)}
+.pcard:hover::before{height:3px}
+.pcard-icon{width:44px;height:44px;border-radius:12px;margin:0 auto .8rem;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.pcard-gh .pcard-icon{background:linear-gradient(135deg,#1a1a2e22,#24292f18)}
+.pcard-li .pcard-icon{background:linear-gradient(135deg,#0077b518,#00a0dc12)}
+.pcard-cs .pcard-icon{background:linear-gradient(135deg,rgba(192,57,43,.1),rgba(255,107,107,.06))}
+.pcard-name{font-family:var(--serif);font-size:.9rem;font-weight:600;font-style:italic;color:var(--ink);margin-bottom:.2rem}
+.pcard-handle{font-family:var(--mono);font-size:.5rem;color:var(--muted);letter-spacing:.1em;margin-bottom:.6rem}
+.pcard-desc{font-size:.7rem;color:var(--stone);line-height:1.55;font-weight:300}
+@media(max-width:768px){.profile-cards-row{grid-template-columns:repeat(2,1fr)}.photo-social-row{gap:6px}}
+
+/* WHAT I BRING — RECRUITER SECTION */
+#value-prop{background:linear-gradient(160deg,var(--ink) 0%,var(--ink2) 60%,#2e0d0d 100%);position:relative;overflow:hidden}
+#value-prop::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(231,76,60,.12),transparent 55%),radial-gradient(ellipse at 80% 20%,rgba(255,107,107,.06),transparent 45%);pointer-events:none}
+.vp-inner{position:relative;z-index:1}
+.vp-top{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;margin-bottom:4rem}
+.vp-headline{font-family:var(--serif);font-size:clamp(2rem,5vw,4rem);font-weight:700;line-height:.92;letter-spacing:-.02em;color:#fff;font-style:italic}
+.vp-headline em{display:block;background:linear-gradient(135deg,var(--rose),var(--coral),var(--blush));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.vp-sub{font-size:.88rem;color:rgba(255,179,176,.5);line-height:1.85;font-weight:300;max-width:380px}
+.vp-sub strong{color:rgba(255,220,216,.75);font-weight:500}
+.vp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.vp-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,107,107,.12);border-radius:18px;padding:1.8rem 1.6rem;transition:all .4s var(--spring);position:relative;overflow:hidden}
+.vp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cr),var(--rose),transparent);opacity:0;transition:opacity .3s}
+.vp-card:hover{background:rgba(255,107,107,.07);border-color:rgba(255,107,107,.25);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.vp-card:hover::before{opacity:1}
+.vp-icon{font-size:1.8rem;margin-bottom:1rem;display:block}
+.vp-title{font-family:var(--serif);font-size:1rem;font-weight:600;font-style:italic;color:rgba(255,240,238,.9);margin-bottom:.5rem;line-height:1.2}
+.vp-desc{font-size:.76rem;color:rgba(255,179,176,.5);line-height:1.7;font-weight:300}
+@media(max-width:1024px){.vp-top{grid-template-columns:1fr}.vp-sub{max-width:none}.vp-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.vp-grid{grid-template-columns:1fr}}
+
+/* LINKEDIN OPTIMIZED HEADLINE STRIP */
+.li-headline-strip{background:rgba(0,119,181,.06);border:1px solid rgba(0,119,181,.15);border-radius:14px;padding:1.1rem 1.5rem;margin-top:1.8rem;display:flex;align-items:center;gap:12px}
+.li-hs-icon{width:32px;height:32px;background:linear-gradient(135deg,#0077b5,#00a0dc);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.li-hs-icon svg{width:16px;height:16px;fill:#fff}
+.li-hs-text{font-size:.78rem;color:var(--muted);line-height:1.5;font-weight:300}
+.li-hs-text strong{color:var(--ink2);font-weight:500}
+.li-hs-link{margin-left:auto;font-family:var(--mono);font-size:.5rem;color:#0077b5;text-decoration:none;letter-spacing:.1em;padding:.3rem .8rem;border:1px solid rgba(0,119,181,.3);border-radius:99px;white-space:nowrap;transition:all .25s;flex-shrink:0}
+.li-hs-link:hover{background:#0077b5;color:#fff;border-color:#0077b5}
+
+/* OPEN TO WORK BANNER */
+.otw-banner{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(16,185,129,.06),rgba(16,185,129,.03));border:1px solid rgba(16,185,129,.2);border-radius:16px;padding:1.1rem 1.6rem;margin-bottom:2rem}
+.otw-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--green-dark),var(--green));border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;box-shadow:0 4px 16px var(--green-glow)}
+.otw-body{flex:1}
+.otw-title{font-size:.82rem;font-weight:600;color:var(--green-dark);margin-bottom:.15rem}
+.otw-desc{font-family:var(--mono);font-size:.52rem;color:var(--stone);letter-spacing:.1em}
+.otw-cta{font-family:var(--mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;padding:.4rem 1rem;background:linear-gradient(135deg,var(--green-dark),var(--green));color:#fff;border-radius:99px;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:all .3s var(--spring)}
+.otw-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px var(--green-glow)}
 .live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:greenPulse 2s infinite;box-shadow:0 0 6px var(--green-glow)}
 
 .about-body p{font-size:.94rem;color:var(--muted);line-height:2;margin-bottom:1.5rem;font-weight:300}
@@ -342,6 +480,24 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
 .foot{font-family:var(--mono);font-size:.55rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
 .foot strong{color:var(--ruby)}
 
+/* VIEW COUNTER */
+.view-counter-badge{display:inline-flex;align-items:center;gap:8px;padding:.5rem 1.2rem;background:rgba(255,255,255,.7);border:1px solid rgba(192,57,43,.15);border-radius:99px;font-family:var(--mono);font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);backdrop-filter:blur(8px);transition:all .3s var(--spring)}
+.view-counter-badge:hover{background:rgba(255,240,238,.9);border-color:rgba(192,57,43,.3);transform:translateY(-2px)}
+.vc-eye{font-size:.9rem;line-height:1}
+.vc-num{font-family:var(--serif);font-size:.95rem;font-weight:700;font-style:italic;background:linear-gradient(135deg,var(--cr),var(--ruby));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.01em;line-height:1}
+.vc-label{color:var(--stone)}
+.vc-live-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:greenPulse 2s ease-in-out infinite;flex-shrink:0;box-shadow:0 0 5px var(--green-glow)}
+/* HERO VIEW COUNTER CARD */
+.hero-views-card{margin-top:12px;background:rgba(255,255,255,.65);border:1px solid rgba(16,185,129,.2);border-radius:14px;padding:1rem 1.2rem;display:flex;align-items:center;gap:12px;transition:all .35s var(--spring);animation:cardFloat 6s ease-in-out infinite 1s;position:relative;overflow:hidden}
+.hero-views-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green-dark),var(--green),rgba(16,185,129,.3))}
+.hero-views-card:hover{background:rgba(230,247,242,.85);border-color:rgba(16,185,129,.4);transform:translateY(-4px);box-shadow:0 12px 30px rgba(16,185,129,.12)}
+.hvc-icon{font-size:1.3rem;line-height:1;flex-shrink:0}
+.hvc-num{font-family:var(--serif);font-size:1.6rem;font-weight:700;font-style:italic;background:linear-gradient(135deg,var(--green-dark),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;letter-spacing:-.02em;min-width:40px}
+.hvc-info{display:flex;flex-direction:column;gap:2px}
+.hvc-label{font-family:var(--mono);font-size:.48rem;color:var(--green-dark);letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+.hvc-sub{font-size:.7rem;color:var(--stone);font-weight:300}
+.hvc-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:greenPulse 2s ease-in-out infinite;margin-left:auto;flex-shrink:0;box-shadow:0 0 8px var(--green-glow)}
+
 /* SCROLL PROGRESS */
 .scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--cr),var(--ruby),var(--rose),var(--green));z-index:10001;width:0;transition:none}
 
@@ -372,9 +528,9 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
 
 /* RESPONSIVE */
 @media(max-width:1400px){:root{--section-px:4rem}.about-grid{gap:4rem}}
-@media(max-width:1200px){:root{--section-px:3rem}#hero{grid-template-columns:1fr 320px;gap:3rem}.about-grid{grid-template-columns:1fr 1.1fr;gap:3rem}.exp-wrap{grid-template-columns:240px 1fr;gap:3rem}.proj-grid{grid-template-columns:repeat(2,1fr)}.ach-grid{grid-template-columns:repeat(2,1fr)}.nav-links{gap:1.2rem}}
-@media(max-width:1024px){:root{--section-px:2.5rem}.nav-links{display:none}.nav-cta{display:none}.hamburger{display:flex}.mobile-nav{display:flex}#hero{grid-template-columns:1fr;padding-top:7rem;padding-bottom:4rem;min-height:auto}.hero-panel{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:2rem}.hero-card{margin-bottom:0}.mini-cards{grid-column:1/-1}.about-grid{grid-template-columns:1fr}.profile-card{margin-top:1.5rem;margin-bottom:2rem}.skills-header{grid-template-columns:1fr}.skills-note{text-align:left;margin-top:1rem;max-width:none}.skills-grid{grid-template-columns:repeat(2,1fr)}.exp-wrap{grid-template-columns:1fr}.exp-nav{position:static;flex-direction:row;flex-wrap:wrap;gap:6px;margin-bottom:2rem}.exp-tab{border-left:none;border-bottom:2px solid rgba(231,76,60,.12);border-radius:10px;padding:.8rem 1.2rem}.exp-tab.active{border-bottom-color:var(--ruby);border-left:none}.edu-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:768px){:root{--section-px:1.5rem}.section{padding-top:5rem;padding-bottom:5rem}nav{padding:1rem 1.5rem}nav.scrolled{padding:.8rem 1.5rem}.logo{font-size:1.15rem}#hero{padding:6rem 1.5rem 3.5rem;gap:2rem}.hero-name{font-size:clamp(3rem,12vw,5rem)}.hero-bio{font-size:.88rem;line-height:1.85}.hero-availability{font-size:.5rem;padding:.4rem 1rem;margin-bottom:1.5rem}.hero-panel{grid-template-columns:1fr}.mini-cards{grid-template-columns:repeat(2,1fr)}.skills-grid{grid-template-columns:1fr}.proj-grid,.edu-grid,.ach-grid{grid-template-columns:1fr}.train-grid{grid-template-columns:1fr}.stat-row{grid-template-columns:repeat(3,1fr);gap:8px}.sbn{font-size:2.2rem}.ep-role{font-size:1.6rem}.contact-sub{font-size:.82rem}.c-link{font-size:.68rem}.soc-row{gap:8px}.soc-btn{padding:.6rem 1.4rem;font-size:.5rem}footer{flex-direction:column;text-align:center;padding:1.5rem}}
+@media(max-width:1200px){:root{--section-px:3rem}#hero{grid-template-columns:1fr 320px;gap:3rem}.about-grid{grid-template-columns:1fr 1.1fr;gap:3rem}.exp-wrap{grid-template-columns:240px 1fr;gap:3rem}.proj-grid{grid-template-columns:repeat(2,1fr)}.ach-grid{grid-template-columns:repeat(2,1fr)}.nav-links li a{padding:.4rem .65rem;font-size:.46rem}.nav-status{display:none}}
+@media(max-width:1024px){:root{--section-px:2.5rem}.nav-pill-wrap{display:none}.nav-status{display:none}.nav-right .nav-cta{display:none}.hamburger{display:flex}.mobile-nav{display:flex}#hero{grid-template-columns:1fr;padding-top:7rem;padding-bottom:4rem;min-height:auto}.hero-panel{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:2rem}.hero-card{margin-bottom:0}.mini-cards{grid-column:1/-1}.about-grid{grid-template-columns:1fr}.profile-card{margin-top:1.5rem;margin-bottom:2rem}.skills-header{grid-template-columns:1fr}.skills-note{text-align:left;margin-top:1rem;max-width:none}.skills-grid{grid-template-columns:repeat(2,1fr)}.exp-wrap{grid-template-columns:1fr}.exp-nav{position:static;flex-direction:row;flex-wrap:wrap;gap:6px;margin-bottom:2rem}.exp-tab{border-left:none;border-bottom:2px solid rgba(231,76,60,.12);border-radius:10px;padding:.8rem 1.2rem}.exp-tab.active{border-bottom-color:var(--ruby);border-left:none}.edu-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){:root{--section-px:1.5rem}.section{padding-top:5rem;padding-bottom:5rem}nav{padding:1rem 1.5rem}nav.scrolled{padding:.8rem 1.5rem}.logo{font-size:1.15rem}#hero{padding:6rem 1.5rem 3.5rem;gap:2rem}.hero-name{font-size:clamp(3rem,12vw,5rem)}.hero-bio{font-size:.88rem;line-height:1.85}.hero-availability{font-size:.5rem;padding:.4rem 1rem;margin-bottom:1.5rem}.hero-panel{grid-template-columns:1fr}.mini-cards{grid-template-columns:repeat(2,1fr)}.skills-grid{grid-template-columns:1fr}.proj-grid,.edu-grid,.ach-grid{grid-template-columns:1fr}.train-grid{grid-template-columns:1fr}.stat-row{grid-template-columns:repeat(3,1fr);gap:8px}.sbn{font-size:2.2rem}.ep-role{font-size:1.6rem}.contact-sub{font-size:.82rem}.c-link{font-size:.68rem}.soc-row{gap:8px}.soc-btn{padding:.6rem 1.4rem;font-size:.5rem}footer{flex-direction:column;text-align:center;padding:1.5rem}.vp-top{grid-template-columns:1fr;gap:2rem}.vp-grid{grid-template-columns:1fr 1fr}.li-headline-strip{flex-direction:column;align-items:flex-start;gap:8px}.li-hs-link{margin-left:0}.otw-banner{flex-wrap:wrap;gap:10px}}
 @media(max-width:480px){:root{--section-px:1.2rem}.section{padding-top:4rem;padding-bottom:4rem}nav{padding:.8rem 1rem}nav.scrolled{padding:.6rem 1rem}.logo{font-size:1rem;gap:6px}.logo-icon{width:18px;height:18px}#hero{padding:5.5rem 1.2rem 3rem}.hero-name{font-size:clamp(2.8rem,14vw,4rem);margin-bottom:.8rem}.hero-title{font-size:.9rem;margin-bottom:1.5rem}.hero-bio{font-size:.82rem;line-height:1.8;margin-bottom:2rem}.hero-greeting{font-size:.55rem;margin-bottom:.6rem}.hero-actions{gap:10px}.btn-primary{padding:.85rem 1.8rem;font-size:.76rem}.btn-ghost{padding:.85rem 1.8rem;font-size:.76rem}.soc-row{flex-direction:column;align-items:center}.soc-btn{width:100%;max-width:220px;text-align:center}.mobile-nav a{font-size:1.4rem}.hobby-pill{padding:.5rem 1rem;font-size:.75rem}}
 @media(max-width:360px){:root{--section-px:1rem}.hero-name{font-size:2.5rem}.mini-cards{grid-template-columns:1fr 1fr;gap:8px}.mini-card{padding:.8rem}.mc-v{font-size:1.6rem}.stat-box{padding:.8rem .4rem}.sbn{font-size:1.5rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
@@ -407,22 +563,61 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
 
 <!-- NAV -->
 <nav id="nav">
+  <!-- Logo: monogram + wordmark -->
   <a href="#" class="logo">
-    <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2C7 2,3 6.5,3 11.5C3 17,7 22,12 22C17 22,21 17,21 11.5C21 6.5,17 2,12 2Z" fill="url(#lg1)"/>
-      <path d="M12 4L12 20M12 10C9 10,6.5 12,7 15M12 13C15 13,17.5 15,17 18" stroke="white" stroke-width="1" fill="none" stroke-linecap="round" opacity=".6"/>
-      <defs><linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#c0392b"/><stop offset="100%" stop-color="#ff6b6b"/></linearGradient></defs>
-    </svg>
-    Sachin Mishra
+    <div class="logo-monogram"><span>SM</span></div>
+    <div class="logo-text-wrap">
+      <span class="logo-name">Sachin Mishra</span>
+      <span class="logo-title">Full Stack .NET Developer</span>
+    </div>
   </a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#education">Education</a></li><li><a href="#training">Training</a></li><li><a href="#achievements">Achievements</a></li>
-  </ul>
-  <a href="#contact" class="nav-cta">Hire Me</a>
-  <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+
+  <!-- Pill nav links -->
+  <div class="nav-pill-wrap">
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <span class="nav-divider"></span>
+      <li><a href="#value-prop">Why Me</a></li>
+      <span class="nav-divider"></span>
+      <li><a href="#skills">Skills</a></li>
+      <span class="nav-divider"></span>
+      <li><a href="#experience">Experience</a></li>
+      <span class="nav-divider"></span>
+      <li><a href="#projects">Projects</a></li>
+      <span class="nav-divider"></span>
+      <li><a href="#education">Education</a></li>
+      <span class="nav-divider"></span>
+      <li><a href="#achievements">Achievements</a></li>
+    </ul>
+  </div>
+
+  <!-- Right group: status + CTA -->
+  <div class="nav-right">
+    <div class="nav-status"><span class="ns-dot"></span>Open to Work</div>
+    <a href="#contact" class="nav-cta"><span>Hire Me ✦</span></a>
+  </div>
+
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav">
-  <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#training">Training</a><a href="#achievements">Achievements</a><a href="#contact" class="nav-cta">Hire Me</a>
+  <div class="mobile-nav-logo">Sachin Mishra</div>
+  <div class="mobile-nav-inner">
+    <div class="mobile-nav-item"><a href="#about">About</a></div>
+    <div class="mobile-nav-item"><a href="#value-prop">Why Hire Me</a></div>
+    <div class="mobile-nav-item"><a href="#skills">Skills</a></div>
+    <div class="mobile-nav-item"><a href="#experience">Experience</a></div>
+    <div class="mobile-nav-item"><a href="#projects">Projects</a></div>
+    <div class="mobile-nav-item"><a href="#education">Education</a></div>
+    <div class="mobile-nav-item"><a href="#achievements">Achievements</a></div>
+  </div>
+  <div class="mobile-nav-cta-wrap">
+    <a href="#contact" class="nav-cta"><span>Hire Me ✦</span></a>
+    <span class="mobile-nav-sub">sachinmishra.nss@gmail.com</span>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -439,18 +634,62 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
       <a href="#experience" class="btn-primary"><span>View My Work</span><span class="ico">→</span></a>
       <button class="btn-ghost" id="downloadCvHero" onclick="generateCV()">Download CV ↓</button>
     </div>
+    <div class="hero-social-row" style="display:flex;gap:12px;margin-top:1.5rem;opacity:0;animation:riseUp .7s 1.3s var(--smooth) forwards">
+      <a href="https://www.linkedin.com/in/sachin-mishra-325754201" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.52rem;color:var(--muted);text-decoration:none;letter-spacing:.1em;padding:.35rem .9rem;border:1px solid rgba(231,76,60,.18);border-radius:99px;transition:all .3s var(--spring)" onmouseover="this.style.color='#0077b5';this.style.borderColor='#0077b5'" onmouseout="this.style.color='';this.style.borderColor='rgba(231,76,60,.18)'">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/Sachin88879" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.52rem;color:var(--muted);text-decoration:none;letter-spacing:.1em;padding:.35rem .9rem;border:1px solid rgba(231,76,60,.18);border-radius:99px;transition:all .3s var(--spring)" onmouseover="this.style.color='#24292f';this.style.borderColor='#24292f'" onmouseout="this.style.color='';this.style.borderColor='rgba(231,76,60,.18)'">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        GitHub
+      </a>
+      <a href="https://www.c-sharpcorner.com/members/sachin-mishra28" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.52rem;color:var(--muted);text-decoration:none;letter-spacing:.1em;padding:.35rem .9rem;border:1px solid rgba(231,76,60,.18);border-radius:99px;transition:all .3s var(--spring)" onmouseover="this.style.color='var(--cr)';this.style.borderColor='var(--cr)'" onmouseout="this.style.color='';this.style.borderColor='rgba(231,76,60,.18)'">
+        ✍️ C# Corner
+      </a>
+      <a href="https://www.instagram.com/__s.a.c.h.i.n___" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.52rem;color:var(--muted);text-decoration:none;letter-spacing:.1em;padding:.35rem .9rem;border:1px solid rgba(231,76,60,.18);border-radius:99px;transition:all .3s var(--spring)" onmouseover="this.style.color='#fd1d1d';this.style.borderColor='#fd1d1d'" onmouseout="this.style.color='';this.style.borderColor='rgba(231,76,60,.18)'">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </a>
+    </div>
   </div>
   <div class="hero-panel">
     <div class="hero-card tilt-card">
       <div class="hc-badge">Current Role</div>
       <div class="hc-value">.NET Dev</div>
       <div class="hc-desc">Axtrics Solutions · Mohali, India</div>
+      <div style="margin-top:.8rem;padding-top:.8rem;border-top:1px solid rgba(231,76,60,.1);display:flex;align-items:center;gap:8px">
+        <span style="font-family:var(--mono);font-size:.48rem;color:var(--stone);letter-spacing:.1em;text-transform:uppercase">Stack</span>
+        <span style="font-family:var(--mono);font-size:.5rem;color:var(--muted)">.NET Core · Kafka · Angular · Azure</span>
+      </div>
     </div>
     <div class="mini-cards">
       <div class="mini-card tilt-card"><div class="mc-v" data-count="2">0</div><div class="mc-l">Years Exp.</div></div>
       <div class="mini-card tilt-card"><div class="mc-v" data-count="3">0</div><div class="mc-l">Companies</div></div>
       <div class="mini-card tilt-card"><div class="mc-v" data-count="5">0</div><div class="mc-l">Projects</div></div>
-      <div class="mini-card tilt-card"><div class="mc-v" data-count="82">0</div><div class="mc-l">MCA Topper</div></div>
+      <div class="mini-card tilt-card" style="position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cr),var(--rose))"></div>
+        <div style="font-family:var(--serif);font-size:1rem;font-weight:700;font-style:italic;background:linear-gradient(135deg,var(--cr),var(--ruby));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;margin-bottom:.3rem">Topper</div>
+        <div class="mc-l">Univ. Rank #3</div>
+      </div>
+    </div>
+    <!-- TECH AUTHOR BADGE -->
+    <div style="margin-top:12px;background:rgba(255,255,255,.6);border:1px solid rgba(231,76,60,.1);border-radius:14px;padding:1rem 1.2rem;display:flex;align-items:center;gap:10px;transition:all .3s var(--spring);animation:cardFloat 5s ease-in-out infinite .5s" class="tilt-card">
+      <span style="font-size:1.2rem">✍️</span>
+      <div>
+        <div style="font-family:var(--mono);font-size:.5rem;color:var(--ruby);letter-spacing:.14em;text-transform:uppercase;margin-bottom:2px">Tech Author</div>
+        <div style="font-size:.75rem;color:var(--ink2);font-weight:400">C# Corner · 10M+ Readers</div>
+      </div>
+      <a href="https://www.c-sharpcorner.com/members/sachin-mishra28" target="_blank" style="margin-left:auto;font-family:var(--mono);font-size:.46rem;color:var(--ruby);text-decoration:none;letter-spacing:.08em;padding:.28rem .7rem;border:1px solid rgba(231,76,60,.2);border-radius:99px;transition:all .25s;white-space:nowrap" onmouseover="this.style.background='linear-gradient(135deg,#c0392b,#e74c3c)';this.style.color='#fff'" onmouseout="this.style.background='';this.style.color='var(--ruby)'">View ↗</a>
+    </div>
+    <!-- VIEW COUNTER CARD -->
+    <div class="hero-views-card tilt-card">
+      <span class="hvc-icon">👁️</span>
+      <div class="hvc-num" id="viewCountHero">…</div>
+      <div class="hvc-info">
+        <span class="hvc-label">Portfolio Views</span>
+        <span class="hvc-sub">Total visitors worldwide</span>
+      </div>
+      <span class="hvc-dot"></span>
     </div>
   </div>
 </section>
@@ -463,12 +702,89 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
   </div>
 </div>
 
+<!-- WHAT I BRING — RECRUITER VALUE PROP -->
+<section id="value-prop" class="section">
+  <div class="vp-inner">
+    <div class="vp-top rv">
+      <div>
+        <div class="sec-eyebrow" style="color:rgba(255,107,107,.5)">Why Hire Me</div>
+        <h2 class="vp-headline">What I Bring<br><em>to Your Team</em></h2>
+      </div>
+      <p class="vp-sub">I don't just write code — I build systems that scale. From <strong>healthcare platforms serving the US</strong> to AR experiences certified by IIT Roorkee, I bring breadth, depth, and a growth mindset to every role.</p>
+    </div>
+    <div class="vp-grid">
+      <div class="vp-card rv">
+        <span class="vp-icon">🏗️</span>
+        <div class="vp-title">Enterprise-Grade Architecture</div>
+        <div class="vp-desc">Designed and built multitenant, microservices-based systems on Azure with Kafka event streaming — production-tested at scale for US healthcare clients.</div>
+      </div>
+      <div class="vp-card rv d1">
+        <span class="vp-icon">⚡</span>
+        <div class="vp-title">Full Stack Delivery</div>
+        <div class="vp-desc">Backend-first with .NET Core & C#, fluent in Angular & React for UI, and comfortable in SQL Server optimisation — end-to-end ownership of features.</div>
+      </div>
+      <div class="vp-card rv d2">
+        <span class="vp-icon">📝</span>
+        <div class="vp-title">Community Contributor</div>
+        <div class="vp-desc">Published technical author on C# Corner — a platform with 10M+ monthly readers. Writing deepens understanding and signals genuine expertise.</div>
+      </div>
+      <div class="vp-card rv d1">
+        <span class="vp-icon">🎓</span>
+        <div class="vp-title">Academic Excellence</div>
+        <div class="vp-desc">MCA with 82.61% — 3rd University Topper at CSJMU Kanpur. Strong CS fundamentals in data structures, algorithms, and software design patterns.</div>
+      </div>
+      <div class="vp-card rv d2">
+        <span class="vp-icon">🚀</span>
+        <div class="vp-title">Fast Learner, Future-Ready</div>
+        <div class="vp-desc">From Blockchain & NEAR Protocol to AR/VR with Unity — I actively explore emerging tech and bring that curiosity into every project I join.</div>
+      </div>
+      <div class="vp-card rv d3">
+        <span class="vp-icon">🤝</span>
+        <div class="vp-title">Leadership & Soft Skills</div>
+        <div class="vp-desc">District-level speech winner, NSS Campus Ambassador, and Literary Club Secretary. I communicate clearly, lead confidently, and collaborate effectively.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ABOUT -->
 <section id="about" class="section">
   <div class="about-grid">
     <div class="rv-l">
       <div class="sec-eyebrow">01 — About</div>
       <h2 class="sec-heading">The Developer<br><em>Behind the Code</em></h2>
+
+      <!-- PHOTO + BIO CARD -->
+      <div class="photo-bio-card">
+        <!-- ✏️ PHOTO: Replace YOUR_PHOTO_URL_HERE with your actual photo URL or local file path e.g. "images/sachin.jpg" -->
+        <div class="photo-avatar" style="background:linear-gradient(135deg,#c0392b,#e74c3c,#ff6b6b);overflow:hidden;display:flex;align-items:center;justify-content:center">
+          <img src="https://www.c-sharpcorner.com/UploadFile/AuthorImage/70f6c720230302095347.jpg.ashx?height=120&amp;width=120" alt="Sachin Mishra" onerror="this.style.display='none';this.parentElement.setAttribute('data-initials','SM')" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block"/>
+        </div>
+        <div class="photo-name-card">Sachin Mishra</div>
+        <div class="photo-role-card">Full Stack .NET Developer & Consultant</div>
+        <p class="photo-bio-text">
+          Passionate software engineer from India 🇮🇳 with <strong>2+ years</strong> of professional experience building scalable enterprise applications. Currently engineering healthcare RCM platforms at <strong>Axtrics Solutions</strong> that serve US healthcare providers. MCA 3rd University Topper (CSJMU, 82.61%) with a deep love for <strong>Clean Architecture</strong>, emerging tech (AR/VR, Blockchain), and writing tech articles on <strong>C# Corner</strong>.
+        </p>
+        <div class="photo-social-row">
+          <a href="https://www.linkedin.com/in/sachin-mishra-325754201" target="_blank" class="psoc-btn li">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/Sachin88879" target="_blank" class="psoc-btn gh">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.c-sharpcorner.com/members/sachin-mishra28" target="_blank" class="psoc-btn cs">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 4.5c4.142 0 7.5 3.358 7.5 7.5s-3.358 7.5-7.5 7.5S4.5 16.142 4.5 12 7.858 4.5 12 4.5zm-1.5 3v9l7.5-4.5-7.5-4.5z"/></svg>
+            C# Corner
+          </a>
+          <a href="https://www.instagram.com/__s.a.c.h.i.n___" target="_blank" class="psoc-btn ig">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+
       <div class="profile-card">
         <div class="pc-top">
           <div class="pc-dot" style="background:#e5534b"></div><div class="pc-dot" style="background:#daaa3f;margin-left:5px"></div><div class="pc-dot" style="background:#3fb950;margin-left:5px"></div>
@@ -479,20 +795,76 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
         <div class="pc-row"><span class="pc-k">Phone</span><span class="pc-v">8887930549 / 9621497631</span></div>
         <div class="pc-row"><span class="pc-k">Status</span><span class="pc-v"><span class="live-badge"><span class="live-dot"></span>Open to Work</span></span></div>
         <div class="pc-row"><span class="pc-k">LinkedIn</span><span class="pc-v"><a href="https://www.linkedin.com/in/sachin-mishra-325754201" target="_blank">sachin-mishra</a></span></div>
+        <div class="pc-row"><span class="pc-k">GitHub</span><span class="pc-v"><a href="https://github.com/Sachin88879" target="_blank">github/Sachin88879</a></span></div>
+        <div class="pc-row"><span class="pc-k">C# Corner</span><span class="pc-v"><a href="https://www.c-sharpcorner.com/members/sachin-mishra28" target="_blank">Tech Author</a></span></div>
         <div class="pc-row"><span class="pc-k">Date</span><span class="pc-v" id="liveDate"></span></div>
       </div>
     </div>
     <div class="about-body rv-r">
+      <!-- OPEN TO WORK BANNER -->
+      <div class="otw-banner">
+        <div class="otw-icon">✅</div>
+        <div class="otw-body">
+          <div class="otw-title">Open to Full-Time & Contract Roles</div>
+          <div class="otw-desc">Available · .NET · Full Stack · Remote / Hybrid / On-site</div>
+        </div>
+        <a href="mailto:sachinmishra.nss@gmail.com" class="otw-cta">Contact Me</a>
+      </div>
       <p>I'm <strong>Sachin Mishra</strong>, a passionate <strong>Software Engineer & Consultant</strong> specialising in the <em>.NET ecosystem</em>. With hands-on experience across healthcare tech, e-commerce, blockchain, and developer platforms, I build solutions that are scalable, maintainable, and impactful.</p>
       <p>Currently at <strong>Axtrics Solutions</strong> building <strong>Catalyst RCM</strong> — a Revenue Cycle Management platform serving healthcare providers across the USA, using <em>Microservices, Kafka, Docker, and Azure</em>. Also developed an <strong>Admin Management System</strong> with JWT-based role authorization and Angular UI.</p>
-      <p>MCA graduate with <strong>82.61%</strong> (Third University Topper) from CSJMU Kanpur. Skilled in project management, delivering high-quality solutions, and passionate about emerging technologies including <em>AR/VR, Blockchain, and NEAR Protocol</em>.</p>
+      <p>MCA graduate with <strong>82.61%</strong> (Third University Topper) from CSJMU Kanpur. Skilled in project management, delivering high-quality solutions, and passionate about emerging technologies including <em>AR/VR, Blockchain, and NEAR Protocol</em>. Active <strong>tech author on C# Corner</strong> contributing articles to a platform with 10M+ monthly readers.</p>
       <div class="tags-wrap">
         <span class="tag">Clean Architecture</span><span class="tag">SOLID Principles</span><span class="tag">Microservices</span><span class="tag">Multitenant</span><span class="tag">AR / VR</span><span class="tag">Blockchain</span><span class="tag">Repository Pattern</span><span class="tag">Unit Testing</span><span class="tag">JWT Auth</span><span class="tag">Smart Contracts</span>
       </div>
+
+      <!-- LINKEDIN HEADLINE STRIP -->
+      <div class="li-headline-strip">
+        <div class="li-hs-icon"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+        <div class="li-hs-text"><strong>.NET Developer | ASP.NET Core | C# | Kafka | Angular | Microservices | Azure | Docker</strong> — Connect with me on LinkedIn for endorsements, recommendations & opportunities.</div>
+        <a href="https://www.linkedin.com/in/sachin-mishra-325754201" target="_blank" class="li-hs-link">Connect ↗</a>
+      </div>
+
       <div class="stat-row">
         <div class="stat-box rv d1"><div class="sbn">3+</div><div class="sbl">Companies</div></div>
         <div class="stat-box rv d2"><div class="sbn">5+</div><div class="sbl">Projects</div></div>
         <div class="stat-box rv d3"><div class="sbn">10+</div><div class="sbl">Countries</div></div>
+      </div>
+
+      <!-- SOCIAL PROFILES SHOWCASE -->
+      <div class="profiles-section rv">
+        <div class="profiles-title">Find Me Online</div>
+        <div class="profile-cards-row">
+          <a href="https://github.com/Sachin88879" target="_blank" class="pcard pcard-gh">
+            <div class="pcard-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#24292f"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </div>
+            <div class="pcard-name">GitHub</div>
+            <div class="pcard-handle">@Sachin88879</div>
+            <div class="pcard-desc">Open source code, personal projects & contributions</div>
+          </a>
+          <a href="https://www.linkedin.com/in/sachin-mishra-325754201" target="_blank" class="pcard pcard-li">
+            <div class="pcard-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="#0077b5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </div>
+            <div class="pcard-name">LinkedIn</div>
+            <div class="pcard-handle">sachin-mishra</div>
+            <div class="pcard-desc">Professional network, endorsements & recommendations</div>
+          </a>
+          <a href="https://www.c-sharpcorner.com/members/sachin-mishra28" target="_blank" class="pcard pcard-cs">
+            <div class="pcard-icon">✍️</div>
+            <div class="pcard-name">C# Corner</div>
+            <div class="pcard-handle">Tech Author</div>
+            <div class="pcard-desc">.NET articles & technical writing for 10M+ readers</div>
+          </a>
+          <a href="https://www.instagram.com/__s.a.c.h.i.n___" target="_blank" class="pcard pcard-ig">
+            <div class="pcard-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="url(#igGrad)"><defs><linearGradient id="igGrad" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#fcb045"/><stop offset="50%" stop-color="#fd1d1d"/><stop offset="100%" stop-color="#833ab4"/></linearGradient></defs><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </div>
+            <div class="pcard-name">Instagram</div>
+            <div class="pcard-handle">@__s.a.c.h.i.n___</div>
+            <div class="pcard-desc">Personal life, travel & behind-the-scenes moments</div>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -628,9 +1000,9 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
 <section id="education" class="section">
   <div class="rv"><div class="sec-eyebrow">05 — Education</div><h2 class="sec-heading">Academic<br><em>Background</em></h2></div>
   <div class="edu-grid">
-    <div class="edu-card rv tilt-card"><div class="edu-stripe ps-a"></div><div class="edu-icon">🎓</div><div class="edu-deg">Master of Computer Application (MCA)</div><div class="edu-uni">CSJMU (UIET) Kanpur</div><div class="edu-meta"><div class="em-row"><span class="em-k">Year</span><span class="em-v">2023</span></div><div class="em-row"><span class="em-k">Score</span><span class="em-v">82.61%</span></div></div><span class="edu-badge badge-a">🏆 3rd University Topper</span></div>
-    <div class="edu-card rv d1 tilt-card"><div class="edu-stripe ps-b"></div><div class="edu-icon">📚</div><div class="edu-deg">Bachelor of Computer Application (BCA)</div><div class="edu-uni">CSJM University</div><div class="edu-meta"><div class="em-row"><span class="em-k">Year</span><span class="em-v">2021</span></div><div class="em-row"><span class="em-k">Score</span><span class="em-v">67.19%</span></div></div><span class="edu-badge badge-b">Computer Science</span></div>
-    <div class="edu-card rv d2 tilt-card"><div class="edu-stripe ps-c"></div><div class="edu-icon">📖</div><div class="edu-deg">Intermediate Examination</div><div class="edu-uni">UP Board</div><div class="edu-meta"><div class="em-row"><span class="em-k">Year</span><span class="em-v">2017</span></div><div class="em-row"><span class="em-k">Score</span><span class="em-v">68.00%</span></div></div><span class="edu-badge badge-b">UP Board Certified</span></div>
+    <div class="edu-card rv tilt-card"><div class="edu-stripe ps-a"></div><div class="edu-icon">🎓</div><div class="edu-deg">Master of Computer Application (MCA)</div><div class="edu-uni">CSJMU (UIET) Kanpur</div><div class="edu-meta"><div class="em-row"><span class="em-k">Year</span><span class="em-v">2023</span></div></div><span class="edu-badge badge-a">🏆 3rd University Topper</span></div>
+    <div class="edu-card rv d1 tilt-card"><div class="edu-stripe ps-b"></div><div class="edu-icon">📚</div><div class="edu-deg">Bachelor of Computer Application (BCA)</div><div class="edu-uni">CSJM University</div><div class="edu-meta"><div class="em-row"><span class="em-k">Year</span><span class="em-v">2021</span></div></div><span class="edu-badge badge-b">Computer Science</span></div>
+    <div class="edu-card rv d2 tilt-card"><div class="edu-stripe ps-c"></div><div class="edu-icon">📖</div><div class="edu-deg">Intermediate Examination</div><div class="edu-uni">UP Board</div><div class="edu-meta"><div class="em-row"><span class="em-k">Year</span><span class="em-v">2017</span></div></div><span class="edu-badge badge-b">UP Board Certified</span></div>
   </div>
 </section>
 
@@ -650,6 +1022,7 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
     <div class="ach-card rv"><span class="ach-em">🏆</span><div class="ach-title">District-Level Speech Winner</div><div class="ach-desc">First position in Voter Awareness speech competition at district level, awarded by Chief Electoral Officer of UP.</div></div>
     <div class="ach-card rv d1"><span class="ach-em">🎖️</span><div class="ach-title">NSS Campus Ambassador</div><div class="ach-desc">Awarded by Chief Electoral Officer of UP as NSS Volunteer & Campus Ambassador for community service.</div></div>
     <div class="ach-card rv d2"><span class="ach-em">✍️</span><div class="ach-title">Literary Club Secretary</div><div class="ach-desc">Served as Secretary of the Literary Club at CSJMU Kanpur — organised debates, discussions, and cultural events.</div></div>
+    <div class="ach-card rv d1"><span class="ach-em">📝</span><div class="ach-title">C# Corner Tech Author</div><div class="ach-desc">Published technical articles on <a href="https://www.c-sharpcorner.com/members/sachin-mishra28" target="_blank" style="color:var(--ruby);text-decoration:none">C# Corner</a> — a global developer platform with 10M+ monthly readers. Sharing .NET expertise with the developer community worldwide.</div></div>
     <div class="ach-card rv"><span class="ach-em">🛡️</span><div class="ach-title">Ethical Hacking — Udemy</div><div class="ach-desc">Completed certified Ethical Hacking course online, expanding cybersecurity knowledge and practical skills.</div></div>
     <div class="ach-card rv d1"><span class="ach-em">🐍</span><div class="ach-title">Python with IoT Workshop</div><div class="ach-desc">Attended workshops on Python with IoT and Networking Marketing, enhancing cross-domain technical knowledge.</div></div>
     <div class="ach-card rv d2"><span class="ach-em">🏸</span><div class="ach-title">Sports & Debate Certificates</div><div class="ach-desc">Multiple certificates in badminton, chess, public speaking, and debate competitions across academic years.</div></div>
@@ -672,6 +1045,9 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
     </div>
     <div class="soc-row">
       <a href="https://www.linkedin.com/in/sachin-mishra-325754201" target="_blank" class="soc-btn">LinkedIn</a>
+      <a href="https://github.com/Sachin88879" target="_blank" class="soc-btn">GitHub</a>
+      <a href="https://www.instagram.com/__s.a.c.h.i.n___" target="_blank" class="soc-btn">Instagram</a>
+      <a href="https://www.c-sharpcorner.com/members/sachin-mishra28" target="_blank" class="soc-btn">C# Corner</a>
       <a href="mailto:sachinmishra.nss@gmail.com" class="soc-btn">Email Me</a>
       <button class="soc-btn cv-download" id="downloadCvBtn" onclick="generateCV()">Download CV ↓</button>
     </div>
@@ -680,6 +1056,19 @@ footer{padding:1.8rem var(--section-px);border-top:1px solid var(--border);displ
 
 <footer>
   <div class="foot">© 2026 <strong>Sachin Mishra</strong> · Chandigarh, India</div>
+  <!-- VIEW COUNTER -->
+  <div class="view-counter-badge" title="Total portfolio views">
+    <span class="vc-eye">👁️</span>
+    <span class="vc-num" id="viewCount">—</span>
+    <span class="vc-label">Views</span>
+    <span class="vc-live-dot"></span>
+  </div>
+  <div class="foot" style="display:flex;gap:1.5rem;align-items:center">
+    <a href="https://github.com/Sachin88879" target="_blank" style="color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s" onmouseover="this.style.color='var(--ruby)'" onmouseout="this.style.color=''">GitHub</a>
+    <a href="https://www.linkedin.com/in/sachin-mishra-325754201" target="_blank" style="color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s" onmouseover="this.style.color='var(--ruby)'" onmouseout="this.style.color=''">LinkedIn</a>
+    <a href="https://www.instagram.com/__s.a.c.h.i.n___" target="_blank" style="color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s" onmouseover="this.style.color='#fd1d1d'" onmouseout="this.style.color=''">Instagram</a>
+    <a href="https://www.c-sharpcorner.com/members/sachin-mishra28" target="_blank" style="color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s" onmouseover="this.style.color='var(--ruby)'" onmouseout="this.style.color=''">C# Corner</a>
+  </div>
   <div class="foot">Crafted with <strong>precision</strong> & passion</div>
 </footer>
 
@@ -698,6 +1087,111 @@ function showToast(icon, msg, dur=3000){
   t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),dur);
 }
+
+// ========== VIEW COUNTER ==========
+// NOTE: A shared counter (same number for ALL visitors) requires at least
+// ONE tiny HTTP request to a free external server — pure JS alone cannot
+// share data between different people's browsers. These 3 services are
+// 100% free with zero signup or API key needed.
+
+const VC_KEY = 'sachin_pf_vc';      // localStorage key
+const VC_NS  = 'sachinmishra88879'; // unique namespace for your counter
+
+// All 3 are FREE, no signup, no API key needed:
+const VC_APIS = [
+  // Primary — counterapi.dev (free, CORS-enabled)
+  {
+    url: `https://api.counterapi.dev/v1/${VC_NS}/pf/up`,
+    parse: d => d.count
+  },
+  // Fallback 1 — countapi.xyz
+  {
+    url: `https://api.countapi.xyz/hit/${VC_NS}/portfolio`,
+    parse: d => d.value
+  },
+  // Fallback 2 — use primary but GET (read-only, no increment, shows cached)
+  {
+    url: `https://api.counterapi.dev/v1/${VC_NS}/pf`,
+    parse: d => d.count
+  }
+];
+
+const _vcEls = () => [
+  document.getElementById('viewCountHero'),
+  document.getElementById('viewCount')
+];
+
+function _vcSet(text){
+  _vcEls().forEach(el => { if(el) el.textContent = text; });
+}
+
+function _vcAnimate(from, to){
+  if(from === to){ _vcSet(to.toLocaleString()); return; }
+  const dur = Math.min(1800, Math.max(600, (to - from) * 4));
+  const t0 = performance.now();
+  (function tick(now){
+    const p = Math.min((now - t0) / dur, 1);
+    const v = Math.floor(from + (to - from) * (1 - Math.pow(1 - p, 4)));
+    _vcSet(v.toLocaleString());
+    if(p < 1) requestAnimationFrame(tick);
+    else _vcSet(to.toLocaleString());
+  })(t0);
+}
+
+async function _vcTryAPI(api, timeoutMs = 7000){
+  const ctrl = new AbortController();
+  const tid = setTimeout(() => ctrl.abort(), timeoutMs);
+  try{
+    const r = await fetch(api.url, { signal: ctrl.signal });
+    clearTimeout(tid);
+    if(!r.ok) throw new Error(r.status);
+    const d = await r.json();
+    const v = api.parse(d);
+    if(typeof v === 'number' && v > 0) return v;
+    throw new Error('bad value');
+  } catch(e){
+    clearTimeout(tid);
+    throw e;
+  }
+}
+
+async function initViewCounter(){
+  // ── STEP 1: show cached count INSTANTLY (no blank on refresh) ──
+  const cached = parseInt(localStorage.getItem(VC_KEY)) || 0;
+  _vcSet(cached > 0 ? cached.toLocaleString() : '…');
+
+  // ── STEP 2: try APIs in order, animate when one succeeds ──
+  for(let i = 0; i < VC_APIS.length; i++){
+    try{
+      const live = await _vcTryAPI(VC_APIS[i], i === 0 ? 7000 : 5000);
+      localStorage.setItem(VC_KEY, live); // cache for next visit
+      _vcAnimate(cached, live);
+      return; // success — stop trying
+    } catch(_){}
+  }
+
+  // ── STEP 3: all APIs failed — show cached or retry after 5s ──
+  if(cached > 0){
+    _vcSet(cached.toLocaleString()); // cached is better than nothing
+  } else {
+    _vcSet('—');
+    // Auto-retry once after 5 seconds (handles slow connections)
+    setTimeout(async () => {
+      for(const api of VC_APIS){
+        try{
+          const v = await _vcTryAPI(api, 8000);
+          localStorage.setItem(VC_KEY, v);
+          _vcAnimate(0, v);
+          return;
+        } catch(_){}
+      }
+    }, 5000);
+  }
+}
+
+// Start fetching counter IMMEDIATELY on script load (don't wait for loader)
+// This way the count is ready by the time the loader finishes
+initViewCounter();
 
 // ========== LOADER ==========
 window.addEventListener('load',()=>{
@@ -779,8 +1273,12 @@ if(hasFP){
 
 // ========== HAMBURGER ==========
 const hamburger=document.getElementById('hamburger'),mobileNav=document.getElementById('mobileNav');
-hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});
-mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('open');mobileNav.classList.remove('open');document.body.style.overflow=''}));
+function closeMobileNav(){hamburger.classList.remove('open');mobileNav.classList.remove('open');document.body.style.overflow=''}
+function openMobileNav(){hamburger.classList.add('open');mobileNav.classList.add('open');document.body.style.overflow='hidden'}
+hamburger.addEventListener('click',()=>{
+  if(mobileNav.classList.contains('open')){closeMobileNav();}else{openMobileNav();}
+});
+mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMobileNav));
 
 // ========== TABS ==========
 document.querySelectorAll('.exp-tab').forEach(tab=>{
@@ -805,7 +1303,7 @@ const mq=document.getElementById('mqtrack');if(mq){const c=mq.cloneNode(true);c.
 
 // ========== NAV HIGHLIGHT ==========
 document.querySelectorAll('section[id]').forEach(s=>{
-  new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){document.querySelectorAll('.nav-links a').forEach(a=>{a.style.color='';if(a.getAttribute('href')==='#'+x.target.id)a.style.color='var(--cr)'})}})},{threshold:.25}).observe(s);
+  new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){document.querySelectorAll('.nav-links li a').forEach(a=>{a.classList.remove('active-nav');if(a.getAttribute('href')==='#'+x.target.id)a.classList.add('active-nav')})}})},{threshold:.25}).observe(s);
 });
 
 // ========== COUNT UP STATS ==========
@@ -901,7 +1399,7 @@ function buildPDF(btn){
   // Contact bar
   doc.setFontSize(8);
   doc.setTextColor(...gray);
-  doc.text('sachinmishra.nss@gmail.com  |  8887930549 / 9621497631  |  Chandigarh, India  |  linkedin.com/in/sachin-mishra-325754201',M,y);
+  doc.text('sachinmishra.nss@gmail.com  |  8887930549 / 9621497631  |  Chandigarh, India  |  linkedin.com/in/sachin-mishra-325754201  |  github.com/Sachin88879',M,y);
   y+=3;
 
   // Status badge
@@ -993,16 +1491,17 @@ function buildPDF(btn){
   doc.setFont('helvetica','bold');doc.setFontSize(12);doc.setTextColor(...red);
   doc.text('EDUCATION',M,y);y+=6;
   const edus=[
-    {deg:'Master of Computer Application (MCA)',uni:'CSJMU (UIET) Kanpur',yr:'2023',score:'82.61% — 3rd University Topper'},
-    {deg:'Bachelor of Computer Application (BCA)',uni:'CSJM University',yr:'2021',score:'67.19%'},
-    {deg:'Intermediate Examination',uni:'UP Board',yr:'2017',score:'68.00%'}
+    {deg:'Master of Computer Application (MCA)',uni:'CSJMU (UIET) Kanpur',yr:'2023',score:'3rd University Topper'},
+    {deg:'Bachelor of Computer Application (BCA)',uni:'CSJM University',yr:'2021',score:''},
+    {deg:'Intermediate Examination',uni:'UP Board',yr:'2017',score:''}
   ];
   edus.forEach(e=>{
     checkPage();
     doc.setFont('helvetica','bold');doc.setFontSize(9.5);doc.setTextColor(...dark);
     doc.text(e.deg,M,y);y+=4;
     doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(...gray);
-    doc.text(e.uni+'  |  '+e.yr+'  |  '+e.score,M,y);y+=5;
+    const scoreStr = e.score ? '  |  '+e.score : '';
+    doc.text(e.uni+'  |  '+e.yr+scoreStr,M,y);y+=5;
   });
   y+=2;addLine(red);
 
