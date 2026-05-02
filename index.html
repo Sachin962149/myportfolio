@@ -1348,16 +1348,21 @@ document.addEventListener('click',e=>{
     setTimeout(()=>p.remove(),900);
   }
 });
-function generateCVpdf() {
-    // Create an anchor element dynamically
-    const link = document.createElement('a');
-    link.href = 'Sachin_Mishra_Resume.pdf'; // Path to your resume file
-    link.download = 'Sachin_Mishra_Resume.pdf'; // Name for the saved file
-    
-    // Append the link to the document body, trigger a click, then remove it
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+function generateCVpdf(){
+    fetch('Sachin_Mishra_Resume.pdf')
+        .then(response => response.blob())
+        .then(blob => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            // This forces the download and sets the filename
+            a.download = 'Sachin_Mishra_Resume.pdf'; 
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        })
+        .catch(() => alert('Could not download the file.'));
 }
 // ========== CV DOWNLOAD — jsPDF ==========
 function generateCV(){
